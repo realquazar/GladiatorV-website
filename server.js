@@ -10,6 +10,7 @@ const axios = require('axios');
 const path = require('path');
 
 const app = express();
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3000;
 
 // Middleware
@@ -21,7 +22,11 @@ app.use(session({
     secret: process.env.SESSION_SECRET || 'gladiator_super_secret_key',
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: process.env.NODE_ENV === 'production' }
+    proxy: true,
+    cookie: {
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? 'lax' : 'strict'
+    }
 }));
 
 // MongoDB Client
@@ -169,8 +174,8 @@ app.get('/api/dashboard', checkAuth, async (req, res) => {
         const userId = req.session.user.id;
         const numericUserId = parseInt(userId);
 
-        const userStats = await db.collection('user_stats').findOne({ 
-            $or: [{ _id: userId }, { _id: numericUserId }] 
+        const userStats = await db.collection('user_stats').findOne({
+            $or: [{ _id: userId }, { _id: numericUserId }]
         });
 
         const userFlexDoc = await db.collection('user_flexes').findOne({
@@ -580,7 +585,7 @@ app.put('/api/flex/edit', checkAuth, async (req, res) => {
 
         let updated = false;
         const updatedFlexes = userDoc.flexes.map(f => {
-            const isMatch = raw_ts 
+            const isMatch = raw_ts
                 ? (f.exercise === exercise && f.raw_ts === raw_ts)
                 : (f.exercise === exercise);
 
@@ -591,10 +596,10 @@ app.put('/api/flex/edit', checkAuth, async (req, res) => {
                 if (isArchived && !updatedName.includes('(archived)')) {
                     updatedName = `${updatedName} (archived)`;
                 }
-                return { 
-                    ...f, 
+                return {
+                    ...f,
                     exercise: updatedName,
-                    stat: newStat ? newStat.trim() : f.stat 
+                    stat: newStat ? newStat.trim() : f.stat
                 };
             }
             return f;
@@ -633,7 +638,7 @@ app.post('/api/flex/archive', checkAuth, async (req, res) => {
 
         let updated = false;
         const updatedFlexes = userDoc.flexes.map(f => {
-            const isMatch = raw_ts 
+            const isMatch = raw_ts
                 ? (f.exercise === exercise && f.raw_ts === raw_ts)
                 : (f.exercise === exercise);
 
@@ -691,7 +696,7 @@ app.post('/api/flex/unarchive', checkAuth, async (req, res) => {
         // Now set the target flex to active (strip archived tag)
         let updated = false;
         flexes = flexes.map(f => {
-            const isMatch = raw_ts 
+            const isMatch = raw_ts
                 ? (f.exercise === exercise && f.raw_ts === raw_ts)
                 : (f.exercise === exercise);
 
