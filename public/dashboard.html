@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,16 +30,20 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body class="bg-darkBg text-gray-200 font-sans min-h-screen pb-16">
 
     <!-- Navbar -->
     <nav class="border-b border-gray-800/80 bg-cardBg/80 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="/radon_pfp.png" alt="Radon Logo" class="w-10 h-10 rounded-xl border border-red-500/40 object-cover shadow-[0_0_15px_rgba(239,68,68,0.35)]">
-                <span class="font-extrabold text-xl tracking-wide text-white">Gladiator <span class="text-red-500">V</span></span>
+                <img src="/radon_pfp.png" alt="Radon Logo"
+                    class="w-10 h-10 rounded-xl border border-red-500/40 object-cover shadow-[0_0_15px_rgba(239,68,68,0.35)]">
+                <span class="font-extrabold text-xl tracking-wide text-white">Gladiator <span
+                        class="text-red-500">V</span></span>
             </div>
-            <a href="/auth/logout" class="text-xs font-semibold px-4 py-2 rounded-xl bg-gray-800/60 hover:bg-gray-800 text-gray-300 transition border border-gray-700/50">
+            <a href="/auth/logout"
+                class="text-xs font-semibold px-4 py-2 rounded-xl bg-gray-800/60 hover:bg-gray-800 text-gray-300 transition border border-gray-700/50">
                 <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout
             </a>
         </div>
@@ -51,7 +56,9 @@
         <section class="bg-cardBg border border-gray-800/80 rounded-3xl p-6 md:p-8 mb-10 shadow-2xl">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-5">
-                    <img id="userAvatar" class="w-20 h-20 rounded-2xl border-2 border-red-500/40 shadow-lg object-cover hidden" alt="Avatar">
+                    <img id="userAvatar"
+                        class="w-20 h-20 rounded-2xl border-2 border-red-500/40 shadow-lg object-cover hidden"
+                        alt="Avatar">
                     <div>
                         <h1 class="text-3xl font-black text-white" id="username">Gladiator</h1>
                         <p class="text-sm text-gray-400 mt-1">Logged in via Discord</p>
@@ -59,11 +66,13 @@
                 </div>
 
                 <div class="flex items-center gap-4 w-full md:w-auto">
-                    <div class="flex-1 md:flex-none bg-[#16161d] border border-gray-800/80 rounded-2xl p-4 px-6 text-center">
-                        <div class="text-xs uppercase tracking-wider font-bold text-gray-400">Total Flexes</div>
+                    <div
+                        class="flex-1 md:flex-none bg-[#16161d] border border-gray-800/80 rounded-2xl p-4 px-6 text-center">
+                        <div class="text-xs uppercase tracking-wider font-bold text-gray-400">Total Workouts</div>
                         <div class="text-2xl font-black text-red-500 mt-0.5" id="flexCount">0</div>
                     </div>
-                    <div class="flex-1 md:flex-none bg-[#16161d] border border-gray-800/80 rounded-2xl p-4 px-6 text-center">
+                    <div
+                        class="flex-1 md:flex-none bg-[#16161d] border border-gray-800/80 rounded-2xl p-4 px-6 text-center">
                         <div class="text-xs uppercase tracking-wider font-bold text-gray-400">Current Rank</div>
                         <div class="text-2xl font-black text-amber-400 mt-0.5" id="userRank">Beginner</div>
                     </div>
@@ -82,15 +91,19 @@
                     <p class="text-gray-400 text-sm mt-1">Your current personal records and active skill holds.</p>
                 </div>
                 <div class="flex flex-wrap items-center gap-2">
-                    <button onclick="openAddFlexModal()" class="px-4 py-2 text-xs font-bold rounded-xl text-white bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 transition shadow-lg flex items-center gap-2">
+                    <button onclick="openAddFlexModal()"
+                        class="px-4 py-2 text-xs font-bold rounded-xl text-white bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 transition shadow-lg flex items-center gap-2">
                         <i class="fa-solid fa-plus text-xs"></i>
                         <span>Log New Flex</span>
                     </button>
-                    <button onclick="openGraphModal()" class="px-4 py-2 text-xs font-bold rounded-xl text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition shadow-lg flex items-center gap-2">
+                    <button onclick="openGraphModal()"
+                        class="px-4 py-2 text-xs font-bold rounded-xl text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition shadow-lg flex items-center gap-2">
                         <i class="fa-solid fa-chart-line text-xs"></i>
                         <span>Progress Graph</span>
                     </button>
-                    <button onclick="openDeleteFlexModal(null, true)" class="px-3 py-2 text-xs font-bold rounded-xl text-red-400 bg-red-950/40 border border-red-800/40 hover:bg-red-900/40 transition flex items-center gap-1.5" title="Clear All Flexes">
+                    <button onclick="openDeleteFlexModal(null, true)"
+                        class="px-3 py-2 text-xs font-bold rounded-xl text-red-400 bg-red-950/40 border border-red-800/40 hover:bg-red-900/40 transition flex items-center gap-1.5"
+                        title="Clear All Flexes">
                         <i class="fa-solid fa-trash-can text-xs"></i>
                         <span>Clear All</span>
                     </button>
@@ -127,22 +140,27 @@
                         <i class="fa-solid fa-shield-halved text-red-500"></i>
                         Gladiator V's Workout Plan
                     </h2>
-                    <p class="text-gray-400 text-sm mt-1" id="defaultPlanSubtitle">Default routine tailored to your current rank.</p>
+                    <p class="text-gray-400 text-sm mt-1" id="defaultPlanSubtitle">Default routine tailored to your
+                        current rank.</p>
                 </div>
 
                 <!-- Path Toggle Buttons (Gym / Calisthenics) -->
-                <div class="flex items-center bg-[#15151b] border border-gray-800 p-1 rounded-xl self-start sm:self-auto">
-                    <button id="gymToggleBtn" onclick="switchDefaultPath('Gym')" class="px-4 py-1.5 text-xs font-bold rounded-lg transition bg-red-600 text-white shadow">
+                <div
+                    class="flex items-center bg-[#15151b] border border-gray-800 p-1 rounded-xl self-start sm:self-auto">
+                    <button id="gymToggleBtn" onclick="switchDefaultPath('Gym')"
+                        class="px-4 py-1.5 text-xs font-bold rounded-lg transition bg-red-600 text-white shadow">
                         🏋️ Gym
                     </button>
-                    <button id="caliToggleBtn" onclick="switchDefaultPath('Calisthenics')" class="px-4 py-1.5 text-xs font-bold rounded-lg transition text-gray-400 hover:text-white">
+                    <button id="caliToggleBtn" onclick="switchDefaultPath('Calisthenics')"
+                        class="px-4 py-1.5 text-xs font-bold rounded-lg transition text-gray-400 hover:text-white">
                         🤸 Calisthenics
                     </button>
                 </div>
             </div>
 
             <!-- Default Grid Container -->
-            <div id="defaultScheduleContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+            <div id="defaultScheduleContainer"
+                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
                 <!-- 7 Days populated dynamically -->
             </div>
         </section>
@@ -158,19 +176,26 @@
                     <p class="text-gray-400 text-sm mt-1" id="planName">Loading schedule...</p>
                 </div>
                 <div class="flex flex-wrap items-center gap-2">
-                    <button onclick="openAddScheduleModal()" class="px-4 py-2 text-xs font-bold rounded-xl text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition shadow-lg flex items-center gap-2">
+                    <button onclick="openAddScheduleModal()"
+                        class="px-4 py-2 text-xs font-bold rounded-xl text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition shadow-lg flex items-center gap-2">
                         <i class="fa-solid fa-plus text-xs"></i>
                         <span>New Schedule</span>
                     </button>
-                    <button id="renameScheduleBtn" onclick="openRenameScheduleModal()" class="hidden px-3 py-2 text-xs font-bold rounded-xl text-gray-300 bg-gray-800 hover:bg-gray-700 transition flex items-center gap-1.5" title="Rename active schedule">
+                    <button id="renameScheduleBtn" onclick="openRenameScheduleModal()"
+                        class="hidden px-3 py-2 text-xs font-bold rounded-xl text-gray-300 bg-gray-800 hover:bg-gray-700 transition flex items-center gap-1.5"
+                        title="Rename active schedule">
                         <i class="fa-solid fa-pen text-xs"></i>
                         <span>Rename Plan</span>
                     </button>
-                    <button id="deleteScheduleBtn" onclick="openDeleteScheduleModal()" class="hidden px-3 py-2 text-xs font-bold rounded-xl text-amber-400 bg-amber-950/40 border border-amber-800/40 hover:bg-amber-900/40 transition flex items-center gap-1.5" title="Delete active schedule plan">
+                    <button id="deleteScheduleBtn" onclick="openDeleteScheduleModal()"
+                        class="hidden px-3 py-2 text-xs font-bold rounded-xl text-amber-400 bg-amber-950/40 border border-amber-800/40 hover:bg-amber-900/40 transition flex items-center gap-1.5"
+                        title="Delete active schedule plan">
                         <i class="fa-solid fa-trash text-xs"></i>
                         <span>Delete Plan</span>
                     </button>
-                    <button id="deleteWorkoutBtn" onclick="openClearAllSchedulesModal()" class="hidden px-3 py-2 text-xs font-bold rounded-xl text-red-400 bg-red-950/40 border border-red-800/40 hover:bg-red-900/40 transition flex items-center gap-1.5" title="Clear all custom plans">
+                    <button id="deleteWorkoutBtn" onclick="openClearAllSchedulesModal()"
+                        class="hidden px-3 py-2 text-xs font-bold rounded-xl text-red-400 bg-red-950/40 border border-red-800/40 hover:bg-red-900/40 transition flex items-center gap-1.5"
+                        title="Clear all custom plans">
                         <i class="fa-solid fa-trash-can text-xs"></i>
                         <span>Clear All</span>
                     </button>
@@ -178,7 +203,8 @@
             </div>
 
             <!-- Schedule Tabs Bar -->
-            <div id="scheduleTabsContainer" class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 border-b border-gray-800/80 no-scrollbar">
+            <div id="scheduleTabsContainer"
+                class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 border-b border-gray-800/80 no-scrollbar">
                 <!-- Tab buttons dynamically inserted here -->
             </div>
 
@@ -200,7 +226,8 @@
 
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-sm text-gray-300">
-                    <thead class="bg-[#15151b] text-xs font-bold uppercase tracking-wider text-gray-400 border-b border-gray-800">
+                    <thead
+                        class="bg-[#15151b] text-xs font-bold uppercase tracking-wider text-gray-400 border-b border-gray-800">
                         <tr>
                             <th class="py-4 px-4">Item Name</th>
                             <th class="py-4 px-4">Category</th>
@@ -220,7 +247,8 @@
     <script src="/js/dashboard.js"></script>
 
     <!-- Add Flex Modal -->
-    <div id="addFlexModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div id="addFlexModal"
+        class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 w-full max-w-md relative shadow-2xl">
             <button onclick="closeAddFlexModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-xl"></i>
@@ -231,13 +259,16 @@
             <form id="addFlexForm" onsubmit="handleAddFlex(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Exercise / Skill</label>
-                    <input type="text" id="flexExerciseInput" required placeholder="e.g. Planche hold" class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500">
+                    <input type="text" id="flexExerciseInput" required placeholder="e.g. Planche hold"
+                        class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Result / Stat</label>
-                    <input type="text" id="flexStatInput" required placeholder="e.g. 15 seconds or 100 kg" class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500">
+                    <input type="text" id="flexStatInput" required placeholder="e.g. 15 seconds or 100 kg"
+                        class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500">
                 </div>
-                <button type="submit" class="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 transition shadow-lg">
+                <button type="submit"
+                    class="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 transition shadow-lg">
                     Record Flex
                 </button>
             </form>
@@ -245,7 +276,8 @@
     </div>
 
     <!-- Edit Flex Modal -->
-    <div id="editFlexModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div id="editFlexModal"
+        class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 w-full max-w-md relative shadow-2xl">
             <button onclick="closeEditFlexModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-xl"></i>
@@ -258,13 +290,16 @@
                 <input type="hidden" id="editFlexOrigExercise">
                 <div>
                     <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Exercise / Skill</label>
-                    <input type="text" id="editFlexExerciseInput" required class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500">
+                    <input type="text" id="editFlexExerciseInput" required
+                        class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Result / Stat</label>
-                    <input type="text" id="editFlexStatInput" required class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500">
+                    <input type="text" id="editFlexStatInput" required
+                        class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500">
                 </div>
-                <button type="submit" class="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition shadow-lg">
+                <button type="submit"
+                    class="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition shadow-lg">
                     Save Changes
                 </button>
             </form>
@@ -272,18 +307,23 @@
     </div>
 
     <!-- Delete Flex Confirmation Modal -->
-    <div id="deleteFlexModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div id="deleteFlexModal"
+        class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 w-full max-w-md relative shadow-2xl text-center">
-            <div class="w-14 h-14 rounded-2xl bg-red-950/60 border border-red-800/60 text-red-500 flex items-center justify-center text-2xl mx-auto mb-4">
+            <div
+                class="w-14 h-14 rounded-2xl bg-red-950/60 border border-red-800/60 text-red-500 flex items-center justify-center text-2xl mx-auto mb-4">
                 <i class="fa-solid fa-triangle-exclamation"></i>
             </div>
             <h3 class="text-xl font-black text-white mb-2" id="deleteModalTitle">Confirm Delete</h3>
-            <p class="text-gray-400 text-sm mb-6" id="deleteModalDesc">Are you sure you want to delete this flex entry?</p>
+            <p class="text-gray-400 text-sm mb-6" id="deleteModalDesc">Are you sure you want to delete this flex entry?
+            </p>
             <div class="flex items-center gap-3">
-                <button onclick="closeDeleteFlexModal()" class="flex-1 py-2.5 rounded-xl font-bold text-gray-300 bg-gray-800 hover:bg-gray-700 transition">
+                <button onclick="closeDeleteFlexModal()"
+                    class="flex-1 py-2.5 rounded-xl font-bold text-gray-300 bg-gray-800 hover:bg-gray-700 transition">
                     Cancel
                 </button>
-                <button onclick="confirmDeleteFlex()" class="flex-1 py-2.5 rounded-xl font-bold text-white bg-red-600 hover:bg-red-500 transition shadow-lg">
+                <button onclick="confirmDeleteFlex()"
+                    class="flex-1 py-2.5 rounded-xl font-bold text-white bg-red-600 hover:bg-red-500 transition shadow-lg">
                     Delete
                 </button>
             </div>
@@ -291,7 +331,8 @@
     </div>
 
     <!-- Graph Analytics Modal -->
-    <div id="graphModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div id="graphModal"
+        class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 w-full max-w-2xl relative shadow-2xl">
             <button onclick="closeGraphModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-xl"></i>
@@ -299,22 +340,26 @@
             <h3 class="text-xl font-black text-white mb-4 flex items-center gap-2">
                 <i class="fa-solid fa-chart-line text-rose-500"></i> Progress Graph
             </h3>
-            
+
             <div class="mb-4">
                 <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Select Exercise</label>
-                <select id="graphExerciseSelect" onchange="renderFlexChart()" class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-rose-500">
+                <select id="graphExerciseSelect" onchange="renderFlexChart()"
+                    class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-rose-500">
                 </select>
             </div>
 
-            <div class="relative h-64 w-full bg-[#0d0d10] p-4 rounded-2xl border border-gray-800 flex items-center justify-center">
+            <div
+                class="relative h-64 w-full bg-[#0d0d10] p-4 rounded-2xl border border-gray-800 flex items-center justify-center">
                 <canvas id="flexChartCanvas"></canvas>
-                <p id="noGraphDataMsg" class="hidden text-gray-500 text-sm font-bold">Log at least 2 entries for this exercise to view history chart.</p>
+                <p id="noGraphDataMsg" class="hidden text-gray-500 text-sm font-bold">Log at least 2 entries for this
+                    exercise to view history chart.</p>
             </div>
         </div>
     </div>
 
     <!-- Add Schedule Modal -->
-    <div id="addScheduleModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div id="addScheduleModal"
+        class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 w-full max-w-md relative shadow-2xl">
             <button onclick="closeAddScheduleModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-xl"></i>
@@ -325,9 +370,12 @@
             <form id="addScheduleForm" onsubmit="handleAddSchedule(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Schedule Name</label>
-                    <input type="text" id="scheduleNameInput" required maxlength="25" placeholder="e.g. Calisthenics, Boxing, or PPL" class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500">
+                    <input type="text" id="scheduleNameInput" required maxlength="25"
+                        placeholder="e.g. Calisthenics, Boxing, or PPL"
+                        class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500">
                 </div>
-                <button type="submit" class="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition shadow-lg">
+                <button type="submit"
+                    class="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition shadow-lg">
                     Create Schedule
                 </button>
             </form>
@@ -335,7 +383,8 @@
     </div>
 
     <!-- Rename Schedule Modal -->
-    <div id="renameScheduleModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div id="renameScheduleModal"
+        class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 w-full max-w-md relative shadow-2xl">
             <button onclick="closeRenameScheduleModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-xl"></i>
@@ -346,9 +395,11 @@
             <form id="renameScheduleForm" onsubmit="handleRenameSchedule(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-gray-400 uppercase mb-1">New Schedule Name</label>
-                    <input type="text" id="renameScheduleNameInput" required maxlength="25" class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500">
+                    <input type="text" id="renameScheduleNameInput" required maxlength="25"
+                        class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500">
                 </div>
-                <button type="submit" class="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition shadow-lg">
+                <button type="submit"
+                    class="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition shadow-lg">
                     Save New Name
                 </button>
             </form>
@@ -356,7 +407,8 @@
     </div>
 
     <!-- Add Exercise Modal -->
-    <div id="addExerciseModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div id="addExerciseModal"
+        class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 w-full max-w-md relative shadow-2xl">
             <button onclick="closeAddExerciseModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-xl"></i>
@@ -367,7 +419,8 @@
             <form id="addExerciseForm" onsubmit="handleAddExercise(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Day of Week</label>
-                    <select id="addExerciseDaySelect" class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500">
+                    <select id="addExerciseDaySelect"
+                        class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500">
                         <option value="Monday">Monday</option>
                         <option value="Tuesday">Tuesday</option>
                         <option value="Wednesday">Wednesday</option>
@@ -379,13 +432,17 @@
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Exercise Name</label>
-                    <input type="text" id="addExerciseNameInput" required placeholder="e.g. Weighted Pullups or Bench Press" class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500">
+                    <input type="text" id="addExerciseNameInput" required
+                        placeholder="e.g. Weighted Pullups or Bench Press"
+                        class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Sets / Reps or Time</label>
-                    <input type="text" id="addExerciseRepsInput" required placeholder="e.g. 4x10 or 30s" class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500">
+                    <input type="text" id="addExerciseRepsInput" required placeholder="e.g. 4x10 or 30s"
+                        class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500">
                 </div>
-                <button type="submit" class="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 transition shadow-lg">
+                <button type="submit"
+                    class="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 transition shadow-lg">
                     Add Exercise
                 </button>
             </form>
@@ -393,7 +450,8 @@
     </div>
 
     <!-- Edit Exercise Modal -->
-    <div id="editExerciseModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div id="editExerciseModal"
+        class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 w-full max-w-md relative shadow-2xl">
             <button onclick="closeEditExerciseModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-xl"></i>
@@ -406,13 +464,16 @@
                 <input type="hidden" id="editExerciseIndex">
                 <div>
                     <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Exercise Name</label>
-                    <input type="text" id="editExerciseNameInput" required class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500">
+                    <input type="text" id="editExerciseNameInput" required
+                        class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Sets / Reps or Time</label>
-                    <input type="text" id="editExerciseRepsInput" required class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500">
+                    <input type="text" id="editExerciseRepsInput" required
+                        class="w-full bg-[#0d0d10] border border-gray-800 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500">
                 </div>
-                <button type="submit" class="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition shadow-lg">
+                <button type="submit"
+                    class="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition shadow-lg">
                     Save Changes
                 </button>
             </form>
@@ -420,18 +481,23 @@
     </div>
 
     <!-- Confirm Schedule Delete Modal -->
-    <div id="deleteScheduleModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div id="deleteScheduleModal"
+        class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-cardBg border border-gray-800 rounded-3xl p-6 w-full max-w-md relative shadow-2xl text-center">
-            <div class="w-14 h-14 rounded-2xl bg-amber-950/60 border border-amber-800/60 text-amber-500 flex items-center justify-center text-2xl mx-auto mb-4">
+            <div
+                class="w-14 h-14 rounded-2xl bg-amber-950/60 border border-amber-800/60 text-amber-500 flex items-center justify-center text-2xl mx-auto mb-4">
                 <i class="fa-solid fa-trash"></i>
             </div>
             <h3 class="text-xl font-black text-white mb-2" id="deleteScheduleTitle">Delete Plan?</h3>
-            <p class="text-gray-400 text-sm mb-6" id="deleteScheduleDesc">Are you sure you want to delete this schedule plan?</p>
+            <p class="text-gray-400 text-sm mb-6" id="deleteScheduleDesc">Are you sure you want to delete this schedule
+                plan?</p>
             <div class="flex items-center gap-3">
-                <button onclick="closeDeleteScheduleModal()" class="flex-1 py-2.5 rounded-xl font-bold text-gray-300 bg-gray-800 hover:bg-gray-700 transition">
+                <button onclick="closeDeleteScheduleModal()"
+                    class="flex-1 py-2.5 rounded-xl font-bold text-gray-300 bg-gray-800 hover:bg-gray-700 transition">
                     Cancel
                 </button>
-                <button onclick="confirmDeleteSchedule()" class="flex-1 py-2.5 rounded-xl font-bold text-white bg-amber-600 hover:bg-amber-500 transition shadow-lg">
+                <button onclick="confirmDeleteSchedule()"
+                    class="flex-1 py-2.5 rounded-xl font-bold text-white bg-amber-600 hover:bg-amber-500 transition shadow-lg">
                     Delete Plan
                 </button>
             </div>
@@ -441,4 +507,5 @@
     <!-- Toast Notifications Container -->
     <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 </body>
+
 </html>
