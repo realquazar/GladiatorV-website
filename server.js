@@ -51,69 +51,225 @@ function checkAuth(req, res, next) {
     res.status(401).json({ error: 'Unauthorized. Please login via Discord.' });
 }
 
-// Default Gladiator V Routines from workout_cog.py
+// --- RANK ASSIGNMENT & DEFAULT ROUTINES MATCHING workout_cog.py ---
+function calculateRank(workoutCount) {
+    if (workoutCount >= 1000) return "Gladiator Maximus";
+    if (workoutCount >= 810) return "Titan Ascendant";
+    if (workoutCount >= 600) return "Apex Centurion";
+    if (workoutCount >= 390) return "Gold Gladiator";
+    if (workoutCount >= 330) return "Arena Master";
+    if (workoutCount >= 240) return "Gilded Champion";
+    if (workoutCount >= 150) return "Steel Centurion";
+    if (workoutCount >= 120) return "Iron Vanguard";
+    if (workoutCount >= 60) return "Bronze Legionnaire";
+    return "Novice / Beginner";
+}
+
 const DEFAULT_ROUTINES = {
-    "Beginner": {
+    "Novice / Beginner": {
         "Gym": {
-            "Monday": [["Pushups", "3x10"], ["Bicep curls", "3x10"], ["Lateral raises", "3x10"], ["Crunches", "3x10"]],
-            "Tuesday": [["Pushups", "3x10"], ["Bicep curls", "3x10"], ["Lateral raises", "3x10"], ["Crunches", "3x10"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x3"], ["Hammer curls (8 kgs)", "10x3"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x3"], ["Hammer curls (8 kgs)", "10x3"]],
             "Wednesday": "Rest Day",
-            "Thursday": [["Pushups", "3x10"], ["Bicep curls", "3x10"], ["Lateral raises", "3x10"], ["Crunches", "3x10"]],
-            "Friday": [["Pushups", "3x10"], ["Bicep curls", "3x10"], ["Lateral raises", "3x10"], ["Crunches", "3x10"]],
-            "Saturday": [["Pushups", "3x10"], ["Bicep curls", "3x10"], ["Lateral raises", "3x10"], ["Crunches", "3x10"]],
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "7x1"], ["Seated Cable row", "7x1"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "7x1"], ["Seated Cable row", "7x1"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Bodyweight squats", "7x1"], ["Weighted squats (3kg/6.5lbs)", "7x1"], ["Treadmill", "5 minutes"]],
             "Sunday": "Rest Day"
         },
         "Calisthenics": {
-            "Monday": [["Push ups", "3x10"], ["Pull ups", "3x10"], ["Dips", "3x10"], ["Pike push ups", "3x10"]],
-            "Tuesday": [["Push ups", "3x10"], ["Pull ups", "3x10"], ["Dips", "3x10"], ["Pike push ups", "3x10"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Push Ups", "7x1"], ["Elevated push ups", "7x1"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Push Ups", "7x1"], ["Elevated push ups", "7x1"]],
             "Wednesday": "Rest Day",
-            "Thursday": [["Push ups", "3x10"], ["Pull ups", "3x10"], ["Dips", "3x10"], ["Pike push ups", "3x10"]],
-            "Friday": [["Push ups", "3x10"], ["Pull ups", "3x10"], ["Dips", "3x10"], ["Pike push ups", "3x10"]],
-            "Saturday": [["Push ups", "3x10"], ["Pull ups", "3x10"], ["Dips", "3x10"], ["Pike push ups", "3x10"]],
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches", "7x1"], ["Plank", "1 set"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches", "7x1"], ["Plank", "1 set"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Bodyweight squats", "7x1"], ["Bodyweight lunges", "7x1"], ["Running", "5 minutes"]],
             "Sunday": "Rest Day"
         }
     },
-    "Intermediate": {
+    "Bronze Legionnaire": {
         "Gym": {
-            "Monday": [["Bicep Curls", "3x10"], ["Hammer Curls", "3x10"], ["Tricep Pushdowns", "3x10"], ["Overhead Extensions", "3x10"], ["Barbell Curls", "3x10"]],
-            "Tuesday": [["Bicep Curls", "3x10"], ["Hammer Curls", "3x10"], ["Tricep Pushdowns", "3x10"], ["Overhead Extensions", "3x10"], ["Barbell Curls", "3x10"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x2"], ["Hammer curls (8 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x2"], ["Hammer curls (8 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"]],
             "Wednesday": "Rest Day",
-            "Thursday": [["Bench Press", "3x10"], ["Incline DB Press", "3x10"], ["Chest Flys", "3x10"], ["Leg Raises", "3x15"], ["Plank", "60s"]],
-            "Friday": [["Bench Press", "3x10"], ["Incline DB Press", "3x10"], ["Chest Flys", "3x10"], ["Leg Raises", "3x15"], ["Plank", "60s"]],
-            "Saturday": [["Back Squats", "3x10"], ["Leg Press", "3x10"], ["Calf Raises", "3x15"], ["Leg Extensions", "3x10"]],
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Weighted squats", "10x2"], ["Leg press", "10x2"], ["Leg extension", "10x2"]],
             "Sunday": "Rest Day"
         },
         "Calisthenics": {
-            "Monday": [["Push ups", "3x10"], ["Inclined push ups", "3x10"], ["Dips", "3x10"], ["Pull ups (close)", "3x10"], ["Pull ups (wide)", "3x10"], ["Muscle ups", "3x10"]],
-            "Tuesday": [["Push ups", "3x10"], ["Inclined push ups", "3x10"], ["Dips", "3x10"], ["Pull ups (close)", "3x10"], ["Pull ups (wide)", "3x10"], ["Muscle ups", "3x10"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Push Ups", "10x2"], ["Elevated push ups", "10x2"], ["Chair assisted dips", "10x2"], ["Pull ups", "10x2"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Push Ups", "10x2"], ["Elevated push ups", "10x2"], ["Chair assisted dips", "10x2"], ["Pull ups", "10x2"]],
             "Wednesday": "Rest Day",
-            "Thursday": [["Push ups", "3x10"], ["Diamond push ups", "3x10"], ["Plank hold", "30-40s"], ["Crunches", "3x10"], ["Frog stand", "20-30s"]],
-            "Friday": [["Push ups", "3x10"], ["Diamond push ups", "3x10"], ["Plank hold", "30-40s"], ["Crunches", "3x10"], ["Frog stand", "20-30s"]],
-            "Saturday": [["Squats", "3x10"], ["Mountain climbers", "3x30"], ["Jog/run", "30 mins"]],
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches", "10x2"], ["Twist crunches", "10x2"], ["Push ups", "10x2"], ["Plank", "2 sets"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches", "10x2"], ["Twist crunches", "10x2"], ["Push ups", "10x2"], ["Plank", "2 sets"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Bodyweight squats", "10x2"], ["Bodyweight lunges", "10x2"], ["Jumping", "10x2"], ["Running", "10 minutes"]],
             "Sunday": "Rest Day"
         }
     },
-    "Hard": {
+    "Iron Vanguard": {
         "Gym": {
-            "Monday": [["Bicep Curls", "4x10"], ["Hammer Curls", "4x10"], ["Tricep Pushdowns", "4x10"], ["Overhead Extensions", "4x10"], ["Barbell Curls", "4x10"]],
-            "Tuesday": [["Bicep Curls", "4x10"], ["Hammer Curls", "4x10"], ["Tricep Pushdowns", "4x10"], ["Overhead Extensions", "4x10"], ["Barbell Curls", "4x10"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x3"], ["Hammer curls (8 kgs)", "10x3"], ["Overhead Triceps extension", "10x3"], ["Preacher curls", "10x3"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x3"], ["Hammer curls (8 kgs)", "10x3"], ["Overhead Triceps extension", "10x3"], ["Preacher curls", "10x3"]],
             "Wednesday": "Rest Day",
-            "Thursday": [["Bench Press", "4x10"], ["Incline DB Press", "4x10"], ["Chest Flys", "4x10"], ["Leg Raises", "4x20"], ["Plank", "90s"]],
-            "Friday": [["Bench Press", "4x10"], ["Incline DB Press", "4x10"], ["Chest Flys", "4x10"], ["Leg Raises", "4x20"], ["Plank", "90s"]],
-            "Saturday": [["Back Squats", "4x10"], ["Leg Press", "4x10"], ["Calf Raises", "4x20"], ["Leg Extensions", "4x10"]],
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x3"], ["Seated Cable row", "10x3"], ["Cable lats pulldown", "10x3"], ["Pec dec", "10x3"], ["Bench press (10-15 kg)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x3"], ["Seated Cable row", "10x3"], ["Cable lats pulldown", "10x3"], ["Pec dec", "10x3"], ["Bench press (10-15 kg)", "2x5"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Weighted squats", "10x2"], ["Leg press", "10x2"], ["Leg extension", "10x2"], ["Incline leg press", "10x2"], ["Seated leg curl", "10x2"]],
             "Sunday": "Rest Day"
         },
         "Calisthenics": {
-            "Monday": [["Push ups", "4x10"], ["Inclined push ups", "4x10"], ["Dips", "4x10"], ["Pull ups (close)", "4x10"], ["Pull ups (wide)", "4x10"], ["Muscle ups", "4x10"]],
-            "Tuesday": [["Push ups", "4x10"], ["Inclined push ups", "4x10"], ["Dips", "4x10"], ["Pull ups (close)", "4x10"], ["Pull ups (wide)", "4x10"], ["Muscle ups", "4x10"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Push Ups", "10x2"], ["Frog stand with parallettes", "2 sets"], ["Pull ups", "10x3"], ["Chin ups", "10x3"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Push Ups", "10x2"], ["Frog stand with parallettes", "2 sets"], ["Pull ups", "10x3"], ["Chin ups", "10x3"]],
             "Wednesday": "Rest Day",
-            "Thursday": [["Push ups", "4x10"], ["Diamond push ups", "4x10"], ["Plank hold", "60s"], ["Crunches", "4x10"], ["Frog stand", "40-50s"]],
-            "Friday": [["Push ups", "4x10"], ["Diamond push ups", "4x10"], ["Plank hold", "60s"], ["Crunches", "4x10"], ["Frog stand", "40-50s"]],
-            "Saturday": [["Squats", "4x10"], ["Mountain climbers", "4x30"], ["Jog/run", "45 mins"]],
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches", "10x2"], ["Twist crunches", "10x2"], ["Push ups", "10x2"], ["Inclined push ups", "10x2"], ["Hindu push ups", "10x1"], ["Chair assisted dips", "10x2"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches", "10x2"], ["Twist crunches", "10x2"], ["Push ups", "10x2"], ["Inclined push ups", "10x2"], ["Hindu push ups", "10x1"], ["Chair assisted dips", "10x2"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Bodyweight squats", "10x3"], ["Weighted squats", "1 set"], ["Jumping", "10x3"], ["Running", "20 minutes"]],
+            "Sunday": "Rest Day"
+        }
+    },
+    "Steel Centurion": {
+        "Gym": {
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x3"], ["Hammer curls (8 kgs)", "10x3"], ["Overhead Triceps extension", "10x3"], ["Preacher curls", "10x3"], ["Overhead press", "10x3"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x3"], ["Hammer curls (8 kgs)", "10x3"], ["Overhead Triceps extension", "10x3"], ["Preacher curls", "10x3"], ["Overhead press", "10x3"]],
+            "Wednesday": "Rest Day",
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x3"], ["Seated Cable row", "10x3"], ["Cable lats pulldown", "10x3"], ["Pec dec", "10x3"], ["Bench press (20-40 kg)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x3"], ["Seated Cable row", "10x3"], ["Cable lats pulldown", "10x3"], ["Pec dec", "10x3"], ["Bench press (20-40 kg)", "2x5"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Weighted squats", "10x3"], ["Leg press", "10x3"], ["Leg extension", "10x3"], ["Incline leg press", "10x3"], ["Seated leg curl", "10x3"]],
+            "Sunday": "Rest Day"
+        },
+        "Calisthenics": {
+            "Monday": [["Arm + neck rotation", "10x1"], ["Push Ups", "10x3"], ["Pull ups", "10x3"], ["Chin ups", "10x3"], ["Frog stand with parallettes", "3 sets"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Push Ups", "10x3"], ["Pull ups", "10x3"], ["Chin ups", "10x3"], ["Frog stand with parallettes", "3 sets"]],
+            "Wednesday": "Rest Day",
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches", "10x3"], ["Twist crunches", "10x3"], ["Push ups", "10x3"], ["Inclined push ups", "10x3"], ["Hindu push ups", "10x3"], ["Chair assisted dips", "10x3"], ["L-sit", "2 sets"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches", "10x3"], ["Twist crunches", "10x3"], ["Push ups", "10x3"], ["Inclined push ups", "10x3"], ["Hindu push ups", "10x3"], ["Chair assisted dips", "10x3"], ["L-sit", "2 sets"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Bodyweight squats", "10x3"], ["Weighted squats", "10x3"], ["Jumping", "10x3"], ["Running", "30 minutes"]],
+            "Sunday": "Rest Day"
+        }
+    },
+    "Gilded Champion": {
+        "Gym": {
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x4"], ["Hammer curls (8 kgs)", "10x4"], ["Overhead Triceps extension", "10x4"], ["Preacher curls", "10x4"], ["Overhead press", "10x4"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x4"], ["Hammer curls (8 kgs)", "10x4"], ["Overhead Triceps extension", "10x4"], ["Preacher curls", "10x4"], ["Overhead press", "10x4"]],
+            "Wednesday": "Rest Day",
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x4"], ["Seated Cable row", "10x4"], ["Cable lats pulldown", "10x4"], ["Pec dec", "10x4"], ["Bench press (20-40 kg)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x4"], ["Seated Cable row", "10x4"], ["Cable lats pulldown", "10x4"], ["Pec dec", "10x4"], ["Bench press (20-40 kg)", "2x5"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Weighted squats", "10x3"], ["Leg press", "10x3"], ["Leg extension", "10x3"], ["Incline leg press", "10x3"], ["Seated leg curl", "10x3"]],
+            "Sunday": "Rest Day"
+        },
+        "Calisthenics": {
+            "Monday": [["Arm + neck rotation", "10x1"], ["Push Ups", "10x4"], ["Pull ups", "10x4"], ["Chin ups", "10x4"], ["Frog stand with parallettes", "2 sets"], ["Tuck front lever hold", "2 sets"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Push Ups", "10x4"], ["Pull ups", "10x4"], ["Chin ups", "10x4"], ["Frog stand with parallettes", "2 sets"], ["Tuck front lever hold", "2 sets"]],
+            "Wednesday": "Rest Day",
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches", "10x4"], ["Twist crunches", "10x4"], ["Push ups", "10x4"], ["Inclined push ups", "10x4"], ["Hindu push ups", "10x4"], ["Chair assisted dips", "10x4"], ["L-sit", "2 sets"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches", "10x4"], ["Twist crunches", "10x4"], ["Push ups", "10x4"], ["Inclined push ups", "10x4"], ["Hindu push ups", "10x4"], ["Chair assisted dips", "10x4"], ["L-sit", "2 sets"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Bodyweight squats", "10x3"], ["Weighted squats", "10x3"], ["Jumping", "10x3"], ["Running", "40 minutes"]],
+            "Sunday": "Rest Day"
+        }
+    },
+    "Arena Master": {
+        "Gym": {
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "15x3"], ["Hammer curls (8 kgs)", "15x3"], ["Overhead Triceps extension", "15x3"], ["Preacher curls", "15x3"], ["Overhead press", "15x3"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "15x3"], ["Hammer curls (8 kgs)", "15x3"], ["Overhead Triceps extension", "15x3"], ["Preacher curls", "15x3"], ["Overhead press", "15x3"]],
+            "Wednesday": "Rest Day",
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x2"], ["Crunches / Ab crunch machine", "15x3"], ["Seated Cable row", "15x3"], ["Cable lats pulldown", "15x3"], ["Pec dec", "15x3"], ["Bench press (20-40 kg)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x2"], ["Crunches / Ab crunch machine", "15x3"], ["Seated Cable row", "15x3"], ["Cable lats pulldown", "15x3"], ["Pec dec", "15x3"], ["Bench press (20-40 kg)", "2x5"]],
+            "Saturday": [["Weighted squats", "10x3"], ["Leg press", "10x3"], ["Leg extension", "10x3"], ["Incline leg press", "10x3"], ["Seated leg curl", "10x3"]],
+            "Sunday": "Rest Day"
+        },
+        "Calisthenics": {
+            "Monday": [["Arm + neck rotation", "10x1"], ["Push Ups", "15x3"], ["Pull ups", "15x3"], ["Chin ups", "15x3"], ["Frog stand with parallettes", "2 sets"], ["Tuck front lever hold", "2 sets"], ["Negative front lever raises", "1x1"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Push Ups", "15x3"], ["Pull ups", "15x3"], ["Chin ups", "15x3"], ["Frog stand with parallettes", "2 sets"], ["Tuck front lever hold", "2 sets"], ["Negative front lever raises", "1x1"]],
+            "Wednesday": "Rest Day",
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches", "15x3"], ["Twist crunches", "15x3"], ["Push ups", "15x3"], ["Inclined push ups", "15x3"], ["Hindu push ups", "15x3"], ["Chair assisted dips", "15x3"], ["L-sit", "2 sets"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches", "15x3"], ["Twist crunches", "15x3"], ["Push ups", "15x3"], ["Inclined push ups", "15x3"], ["Hindu push ups", "15x3"], ["Chair assisted dips", "15x3"], ["L-sit", "2 sets"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Bodyweight squats", "10x3"], ["Weighted squats", "10x3"], ["Jumping", "10x3"], ["Running", "30 minutes"]],
+            "Sunday": "Rest Day"
+        }
+    },
+    "Gold Gladiator": {
+        "Gym": {
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Wednesday": "Rest Day",
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
+            "Saturday": [["Weighted squats", "10x3"], ["Leg press", "10x3"], ["Leg extension", "10x3"], ["Incline leg press", "10x3"], ["Seated leg curl", "10x3"]],
+            "Sunday": "Rest Day"
+        },
+        "Calisthenics": {
+            "Monday": [["Arm + neck rotation", "10x1"], ["Push Ups", "20x2"], ["Pull ups", "20x2"], ["Chin ups", "20x2"], ["Frog stand with parallettes", "2 sets"], ["advance tuck front lever hold", "2 sets"], ["Negative front lever raises", "3x1"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Push Ups", "20x2"], ["Pull ups", "20x2"], ["Chin ups", "20x2"], ["Frog stand with parallettes", "2 sets"], ["advance tuck front lever hold", "2 sets"], ["Negative front lever raises", "3x1"]],
+            "Wednesday": "Rest Day",
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches", "15x2"], ["Twist crunches", "10x2"], ["Push ups", "20x2"], ["Inclined push ups", "20x2"], ["Hindu push ups", "20x2"], ["Chair assisted dips", "20x2"], ["L-sit", "2 sets"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches", "15x2"], ["Twist crunches", "10x2"], ["Push ups", "20x2"], ["Inclined push ups", "20x2"], ["Hindu push ups", "20x2"], ["Chair assisted dips", "20x2"], ["L-sit", "2 sets"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Bodyweight squats", "10x3"], ["Weighted squats", "10x3"], ["Jumping", "10x3"], ["Running", "30 minutes"]],
+            "Sunday": "Rest Day"
+        }
+    },
+    "Apex Centurion": {
+        "Gym": {
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Wednesday": "Rest Day",
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
+            "Saturday": [["Weighted squats", "10x3"], ["Leg press", "10x3"], ["Leg extension", "10x3"], ["Incline leg press", "10x3"], ["Seated leg curl", "10x3"]],
+            "Sunday": "Rest Day"
+        },
+        "Calisthenics": {
+            "Monday": [["Arm + neck rotation", "10x1"], ["Push Ups", "20x2"], ["Pull ups", "20x2"], ["Chin ups", "20x2"], ["Frog stand with parallettes", "2 sets"], ["advance tuck front lever hold", "2 sets"], ["Negative front lever raises", "3x1"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Push Ups", "20x2"], ["Pull ups", "20x2"], ["Chin ups", "20x2"], ["Frog stand with parallettes", "2 sets"], ["advance tuck front lever hold", "2 sets"], ["Negative front lever raises", "3x1"]],
+            "Wednesday": "Rest Day",
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches", "15x2"], ["Twist crunches", "10x2"], ["Push ups", "20x2"], ["Inclined push ups", "20x2"], ["Hindu push ups", "20x2"], ["Chair assisted dips", "20x2"], ["L-sit", "2 sets"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches", "15x2"], ["Twist crunches", "10x2"], ["Push ups", "20x2"], ["Inclined push ups", "20x2"], ["Hindu push ups", "20x2"], ["Chair assisted dips", "20x2"], ["L-sit", "2 sets"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Bodyweight squats", "10x3"], ["Weighted squats", "10x3"], ["Jumping", "10x3"], ["Running", "30 minutes"]],
+            "Sunday": "Rest Day"
+        }
+    },
+    "Titan Ascendant": {
+        "Gym": {
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Wednesday": "Rest Day",
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
+            "Saturday": [["Weighted squats", "10x3"], ["Leg press", "10x3"], ["Leg extension", "10x3"], ["Incline leg press", "10x3"], ["Seated leg curl", "10x3"]],
+            "Sunday": "Rest Day"
+        },
+        "Calisthenics": {
+            "Monday": [["Arm + neck rotation", "10x1"], ["Push Ups", "20x2"], ["Pull ups", "20x2"], ["Chin ups", "20x2"], ["Frog stand with parallettes", "2 sets"], ["advance tuck front lever hold", "2 sets"], ["Negative front lever raises", "3x1"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Push Ups", "20x2"], ["Pull ups", "20x2"], ["Chin ups", "20x2"], ["Frog stand with parallettes", "2 sets"], ["advance tuck front lever hold", "2 sets"], ["Negative front lever raises", "3x1"]],
+            "Wednesday": "Rest Day",
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches", "15x2"], ["Twist crunches", "10x2"], ["Push ups", "20x2"], ["Inclined push ups", "20x2"], ["Hindu push ups", "20x2"], ["Chair assisted dips", "20x2"], ["L-sit", "2 sets"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches", "15x2"], ["Twist crunches", "10x2"], ["Push ups", "20x2"], ["Inclined push ups", "20x2"], ["Hindu push ups", "20x2"], ["Chair assisted dips", "20x2"], ["L-sit", "2 sets"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Bodyweight squats", "10x3"], ["Weighted squats", "10x3"], ["Jumping", "10x3"], ["Running", "30 minutes"]],
+            "Sunday": "Rest Day"
+        }
+    },
+    "Gladiator Maximus": {
+        "Gym": {
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Wednesday": "Rest Day",
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
+            "Saturday": [["Weighted squats", "10x3"], ["Leg press", "10x3"], ["Leg extension", "10x3"], ["Incline leg press", "10x3"], ["Seated leg curl", "10x3"]],
+            "Sunday": "Rest Day"
+        },
+        "Calisthenics": {
+            "Monday": [["Arm + neck rotation", "10x1"], ["Push Ups", "20x2"], ["Pull ups", "20x2"], ["Chin ups", "20x2"], ["Frog stand with parallettes", "2 sets"], ["advance tuck front lever hold", "2 sets"], ["Negative front lever raises", "3x1"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Push Ups", "20x2"], ["Pull ups", "20x2"], ["Chin ups", "20x2"], ["Frog stand with parallettes", "2 sets"], ["advance tuck front lever hold", "2 sets"], ["Negative front lever raises", "3x1"]],
+            "Wednesday": "Rest Day",
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches", "15x2"], ["Twist crunches", "10x2"], ["Push ups", "20x2"], ["Inclined push ups", "20x2"], ["Hindu push ups", "20x2"], ["Chair assisted dips", "20x2"], ["L-sit", "2 sets"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches", "15x2"], ["Twist crunches", "10x2"], ["Push ups", "20x2"], ["Inclined push ups", "20x2"], ["Hindu push ups", "20x2"], ["Chair assisted dips", "20x2"], ["L-sit", "2 sets"]],
+            "Saturday": [["Arm + neck rotation", "10x1"], ["Bodyweight squats", "10x3"], ["Weighted squats", "10x3"], ["Jumping", "10x3"], ["Running", "30 minutes"]],
             "Sunday": "Rest Day"
         }
     }
 };
+
+
+
 
 // Discord OAuth Routes
 async function handleDiscordCallback(req, res) {
@@ -193,11 +349,9 @@ app.get('/api/dashboard', checkAuth, async (req, res) => {
         const schedules = customWorkoutDoc?.schedules || [];
 
         const flexCount = userStats?.workout_count || flexesList.length || 0;
-        let rank = "Beginner";
-        if (flexCount >= 30) rank = "Hard";
-        else if (flexCount >= 10) rank = "Intermediate";
+        const rank = calculateRank(flexCount);
 
-        const defaultRoutine = DEFAULT_ROUTINES[rank] || DEFAULT_ROUTINES["Beginner"];
+        const defaultRoutine = DEFAULT_ROUTINES[rank] || DEFAULT_ROUTINES["Novice / Beginner"];
 
         const dietList = [
             { id: 1, name: "Chicken Breast (200g)", protein: 62, calories: 330, category: "Non-Veg" },
@@ -240,7 +394,6 @@ async function getCustomWorkoutDoc(userId) {
 
 // --- API Endpoints for Custom Workout Schedules & Exercises ---
 
-// 1. ADD NEW SCHEDULE
 app.post('/api/workout/schedule/add', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
@@ -254,13 +407,7 @@ app.post('/api/workout/schedule/add', checkAuth, async (req, res) => {
         const newSchedule = {
             name: name.trim(),
             days: {
-                "Monday": [],
-                "Tuesday": [],
-                "Wednesday": [],
-                "Thursday": [],
-                "Friday": [],
-                "Saturday": [],
-                "Sunday": []
+                "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Sunday": []
             }
         };
 
@@ -281,7 +428,6 @@ app.post('/api/workout/schedule/add', checkAuth, async (req, res) => {
     }
 });
 
-// 2. RENAME SCHEDULE
 app.put('/api/workout/schedule/rename', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
@@ -311,7 +457,6 @@ app.put('/api/workout/schedule/rename', checkAuth, async (req, res) => {
     }
 });
 
-// 3. DELETE SPECIFIC SCHEDULE
 app.delete('/api/workout/schedule/delete', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
@@ -341,7 +486,6 @@ app.delete('/api/workout/schedule/delete', checkAuth, async (req, res) => {
     }
 });
 
-// 4. ADD EXERCISE TO SCHEDULE DAY
 app.post('/api/workout/exercise/add', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
@@ -381,7 +525,6 @@ app.post('/api/workout/exercise/add', checkAuth, async (req, res) => {
     }
 });
 
-// 5. EDIT EXERCISE IN SCHEDULE DAY
 app.put('/api/workout/exercise/edit', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
@@ -418,7 +561,6 @@ app.put('/api/workout/exercise/edit', checkAuth, async (req, res) => {
     }
 });
 
-// 6. DELETE EXERCISE FROM SCHEDULE DAY
 app.delete('/api/workout/exercise/delete', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
@@ -454,7 +596,6 @@ app.delete('/api/workout/exercise/delete', checkAuth, async (req, res) => {
     }
 });
 
-// 7. CLEAR ALL WORKOUT SCHEDULES
 app.delete('/api/workout/delete', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
@@ -472,7 +613,7 @@ app.delete('/api/workout/delete', checkAuth, async (req, res) => {
     }
 });
 
-// --- Helper Functions matching flex_cog.py ---
+// --- Flex Endpoints ---
 function normalizeName(name) {
     return name.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
 }
@@ -495,7 +636,6 @@ function getGraphDate() {
     return now.toLocaleString('en-US', { month: 'short', day: '2-digit' });
 }
 
-// Helper to find document across String or Int _id
 async function getUserFlexDoc(userId) {
     const numericUserId = parseInt(userId);
     return await db.collection('user_flexes').findOne({
@@ -503,9 +643,6 @@ async function getUserFlexDoc(userId) {
     });
 }
 
-// --- API Endpoints for Flexes ---
-
-// 1. ADD FLEX (Automatically archives previous flexes with the same normalized name)
 app.post('/api/flex/add', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
@@ -526,7 +663,6 @@ app.post('/api/flex/add', checkAuth, async (req, res) => {
         const userDoc = await getUserFlexDoc(userId);
         let flexes = userDoc?.flexes || [];
 
-        // Automatically archive any existing active flex with matching normalized exercise name
         flexes = flexes.map(f => {
             if (normalizeName(f.exercise) === normName && !f.exercise.includes('(archived)')) {
                 return { ...f, exercise: `${f.exercise} (archived)` };
@@ -534,7 +670,6 @@ app.post('/api/flex/add', checkAuth, async (req, res) => {
             return f;
         });
 
-        // Add the new active flex entry
         const newEntry = {
             exercise: rawName,
             stat: newStat,
@@ -551,7 +686,6 @@ app.post('/api/flex/add', checkAuth, async (req, res) => {
             { upsert: true }
         );
 
-        // Update user workout counter in user_stats
         await db.collection('user_stats').updateOne(
             { $or: [{ _id: userId }, { _id: numericUserId }] },
             { $inc: { workout_count: 1 } },
@@ -565,7 +699,6 @@ app.post('/api/flex/add', checkAuth, async (req, res) => {
     }
 });
 
-// 2. EDIT FLEX STAT & EXERCISE
 app.put('/api/flex/edit', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
@@ -585,10 +718,7 @@ app.put('/api/flex/edit', checkAuth, async (req, res) => {
 
         let updated = false;
         const updatedFlexes = userDoc.flexes.map(f => {
-            const isMatch = raw_ts
-                ? (f.exercise === exercise && f.raw_ts === raw_ts)
-                : (f.exercise === exercise);
-
+            const isMatch = raw_ts ? (f.exercise === exercise && f.raw_ts === raw_ts) : (f.exercise === exercise);
             if (isMatch) {
                 updated = true;
                 const isArchived = f.exercise.includes('(archived)');
@@ -596,24 +726,14 @@ app.put('/api/flex/edit', checkAuth, async (req, res) => {
                 if (isArchived && !updatedName.includes('(archived)')) {
                     updatedName = `${updatedName} (archived)`;
                 }
-                return {
-                    ...f,
-                    exercise: updatedName,
-                    stat: newStat ? newStat.trim() : f.stat
-                };
+                return { ...f, exercise: updatedName, stat: newStat ? newStat.trim() : f.stat };
             }
             return f;
         });
 
-        if (!updated) {
-            return res.status(404).json({ error: 'Target flex not found.' });
-        }
+        if (!updated) return res.status(404).json({ error: 'Target flex not found.' });
 
-        await db.collection('user_flexes').updateOne(
-            { _id: userDoc._id },
-            { $set: { flexes: updatedFlexes } }
-        );
-
+        await db.collection('user_flexes').updateOne({ _id: userDoc._id }, { $set: { flexes: updatedFlexes } });
         res.json({ success: true, message: 'Flex updated successfully.' });
     } catch (error) {
         console.error('Error editing flex:', error);
@@ -621,71 +741,41 @@ app.put('/api/flex/edit', checkAuth, async (req, res) => {
     }
 });
 
-// 3. ARCHIVE FLEX
 app.post('/api/flex/archive', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
         const { exercise, raw_ts } = req.body;
-
-        if (!exercise) {
-            return res.status(400).json({ error: 'Exercise target is required.' });
-        }
-
         const userDoc = await getUserFlexDoc(userId);
-        if (!userDoc || !userDoc.flexes) {
-            return res.status(404).json({ error: 'No flex records found.' });
-        }
+        if (!userDoc || !userDoc.flexes) return res.status(404).json({ error: 'No flex records found.' });
 
         let updated = false;
         const updatedFlexes = userDoc.flexes.map(f => {
-            const isMatch = raw_ts
-                ? (f.exercise === exercise && f.raw_ts === raw_ts)
-                : (f.exercise === exercise);
-
+            const isMatch = raw_ts ? (f.exercise === exercise && f.raw_ts === raw_ts) : (f.exercise === exercise);
             if (isMatch) {
                 updated = true;
-                if (!f.exercise.includes('(archived)')) {
-                    return { ...f, exercise: `${f.exercise} (archived)` };
-                }
+                if (!f.exercise.includes('(archived)')) return { ...f, exercise: `${f.exercise} (archived)` };
             }
             return f;
         });
 
-        if (!updated) {
-            return res.status(404).json({ error: 'Flex entry not found.' });
-        }
-
-        await db.collection('user_flexes').updateOne(
-            { _id: userDoc._id },
-            { $set: { flexes: updatedFlexes } }
-        );
-
+        if (!updated) return res.status(404).json({ error: 'Flex entry not found.' });
+        await db.collection('user_flexes').updateOne({ _id: userDoc._id }, { $set: { flexes: updatedFlexes } });
         res.json({ success: true, message: 'Flex archived successfully.' });
     } catch (error) {
-        console.error('Error archiving flex:', error);
         res.status(500).json({ error: 'Failed to archive flex.' });
     }
 });
 
-// 4. UNARCHIVE FLEX
 app.post('/api/flex/unarchive', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
         const { exercise, raw_ts } = req.body;
-
-        if (!exercise) {
-            return res.status(400).json({ error: 'Exercise target is required.' });
-        }
-
         const userDoc = await getUserFlexDoc(userId);
-        if (!userDoc || !userDoc.flexes) {
-            return res.status(404).json({ error: 'No flex records found.' });
-        }
+        if (!userDoc || !userDoc.flexes) return res.status(404).json({ error: 'No flex records found.' });
 
         const cleanTargetName = exercise.replace('(archived)', '').trim();
         const targetNorm = normalizeName(cleanTargetName);
 
-        // First archive any existing active flex with matching normalized exercise name
         let flexes = userDoc.flexes.map(f => {
             if (normalizeName(f.exercise) === targetNorm && !f.exercise.includes('(archived)')) {
                 return { ...f, exercise: `${f.exercise} (archived)` };
@@ -693,13 +783,9 @@ app.post('/api/flex/unarchive', checkAuth, async (req, res) => {
             return f;
         });
 
-        // Now set the target flex to active (strip archived tag)
         let updated = false;
         flexes = flexes.map(f => {
-            const isMatch = raw_ts
-                ? (f.exercise === exercise && f.raw_ts === raw_ts)
-                : (f.exercise === exercise);
-
+            const isMatch = raw_ts ? (f.exercise === exercise && f.raw_ts === raw_ts) : (f.exercise === exercise);
             if (isMatch) {
                 updated = true;
                 return { ...f, exercise: cleanTargetName };
@@ -707,79 +793,45 @@ app.post('/api/flex/unarchive', checkAuth, async (req, res) => {
             return f;
         });
 
-        if (!updated) {
-            return res.status(404).json({ error: 'Flex entry not found.' });
-        }
-
-        await db.collection('user_flexes').updateOne(
-            { _id: userDoc._id },
-            { $set: { flexes: flexes } }
-        );
-
+        if (!updated) return res.status(404).json({ error: 'Flex entry not found.' });
+        await db.collection('user_flexes').updateOne({ _id: userDoc._id }, { $set: { flexes: flexes } });
         res.json({ success: true, message: 'Flex unarchived successfully.' });
     } catch (error) {
-        console.error('Error unarchiving flex:', error);
         res.status(500).json({ error: 'Failed to unarchive flex.' });
     }
 });
 
-// 5. DELETE SINGLE FLEX
 app.delete('/api/flex/delete', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
-        // Supports both direct parameters or nested targetItem
         const exercise = req.body.exercise || req.body.targetItem?.exercise;
         const raw_ts = req.body.raw_ts || req.body.targetItem?.raw_ts;
-
-        if (!exercise) {
-            return res.status(400).json({ error: 'Exercise target is required.' });
-        }
-
         const userDoc = await getUserFlexDoc(userId);
-        if (!userDoc || !userDoc.flexes) {
-            return res.status(404).json({ error: 'No flex records found.' });
-        }
+        if (!userDoc || !userDoc.flexes) return res.status(404).json({ error: 'No flex records found.' });
 
         const initialLength = userDoc.flexes.length;
         const updatedFlexes = userDoc.flexes.filter(f => {
-            if (raw_ts) {
-                return !(f.exercise === exercise && f.raw_ts === raw_ts);
-            }
+            if (raw_ts) return !(f.exercise === exercise && f.raw_ts === raw_ts);
             return f.exercise !== exercise;
         });
 
-        if (updatedFlexes.length === initialLength) {
-            return res.status(404).json({ error: 'Flex entry not found.' });
-        }
-
-        await db.collection('user_flexes').updateOne(
-            { _id: userDoc._id },
-            { $set: { flexes: updatedFlexes } }
-        );
-
+        if (updatedFlexes.length === initialLength) return res.status(404).json({ error: 'Flex entry not found.' });
+        await db.collection('user_flexes').updateOne({ _id: userDoc._id }, { $set: { flexes: updatedFlexes } });
         res.json({ success: true, message: 'Flex deleted successfully.' });
     } catch (error) {
-        console.error('Error deleting flex:', error);
         res.status(500).json({ error: 'Failed to delete flex.' });
     }
 });
 
-// 6. CLEAR ALL FLEXES
 app.delete('/api/flex/clear-all', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
         const userDoc = await getUserFlexDoc(userId);
-
         if (userDoc) {
-            await db.collection('user_flexes').updateOne(
-                { _id: userDoc._id },
-                { $set: { flexes: [] } }
-            );
+            await db.collection('user_flexes').updateOne({ _id: userDoc._id }, { $set: { flexes: [] } });
         }
-
         res.json({ success: true, message: 'All flexes cleared.' });
     } catch (error) {
-        console.error('Error clearing flexes:', error);
         res.status(500).json({ error: 'Failed to clear flexes.' });
     }
 });

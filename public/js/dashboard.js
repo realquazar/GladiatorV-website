@@ -611,7 +611,7 @@ function renderDefaultSchedule() {
         } else if (Array.isArray(dayData)) {
             const listItems = dayData.map(([exercise, reps]) => `
                 <div class="bg-[#101015] border border-gray-800/80 rounded-xl p-2 mb-1.5 last:mb-0">
-                    <div class="font-bold text-xs text-white truncate" title="${exercise}">${exercise}</div>
+                    <div class="text-xs font-bold text-gray-200 line-clamp-2 leading-tight" title="${exercise}">${exercise}</div>
                     <div class="text-[11px] text-red-400 font-mono font-semibold">${reps}</div>
                 </div>
             `).join('');
@@ -1068,7 +1068,7 @@ function renderScheduleSection() {
                 return `
                     <div class="bg-[#101015] border border-gray-800/80 rounded-xl p-2.5 mb-1.5 last:mb-0 group relative flex items-center justify-between">
                         <div class="truncate pr-2">
-                            <div class="font-bold text-xs text-white truncate" title="${cleanEx}">${cleanEx}</div>
+                            <div class="text-xs font-bold text-gray-200 line-clamp-2 leading-tight" title="${cleanEx}">${cleanEx}</div>
                             <div class="text-[11px] text-purple-400 font-mono font-semibold mt-0.5">${ex.reps || ''}</div>
                         </div>
 
