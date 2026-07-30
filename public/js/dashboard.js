@@ -611,7 +611,7 @@ function renderDefaultSchedule() {
         } else if (Array.isArray(dayData)) {
             const listItems = dayData.map(([exercise, reps]) => `
                 <div class="bg-[#101015] border border-gray-800/80 rounded-xl p-2 mb-1.5 last:mb-0">
-                    <div class="text-xs font-bold text-gray-200 line-clamp-2 leading-tight" title="${exercise}">${exercise}</div>
+                    <div class="text-xs font-bold text-gray-200" title="${exercise}">${exercise}</div>
                     <div class="text-[11px] text-red-400 font-mono font-semibold">${reps}</div>
                 </div>
             `).join('');
@@ -1066,14 +1066,14 @@ function renderScheduleSection() {
             const listItems = dayExercises.map((ex, exIdx) => {
                 const cleanEx = (ex.exercise || '').replace('🧩', '').trim();
                 return `
-                    <div class="bg-[#101015] border border-gray-800/80 rounded-xl p-2.5 mb-1.5 last:mb-0 group relative flex items-center justify-between">
-                        <div class="truncate pr-2">
-                            <div class="text-xs font-bold text-gray-200 line-clamp-2 leading-tight" title="${cleanEx}">${cleanEx}</div>
+                    <div class="bg-[#101015] border border-gray-800/80 rounded-xl p-2.5 mb-1.5 last:mb-0 group relative flex items-center justify-between gap-2">
+                        <div class="min-w-0 flex-1">
+                            <div class="text-xs font-bold text-gray-200 break-words leading-tight" title="${cleanEx}">${cleanEx}</div>
                             <div class="text-[11px] text-purple-400 font-mono font-semibold mt-0.5">${ex.reps || ''}</div>
                         </div>
 
                         <!-- Action Buttons on hover/focus -->
-                        <div class="flex items-center gap-1 opacity-80 group-hover:opacity-100 transition">
+                        <div class="flex items-center gap-1 opacity-80 group-hover:opacity-100 transition shrink-0">
                             <button onclick="openEditExerciseModal(${activeScheduleIndex}, '${day}', ${exIdx})" class="text-[10px] text-gray-400 hover:text-white p-1 rounded bg-gray-800 hover:bg-gray-700 transition" title="Edit Exercise">
                                 <i class="fa-solid fa-pen"></i>
                             </button>
@@ -1140,8 +1140,7 @@ function renderDietTable(diet) {
 function getRestDayMarkup() {
     return `
         <div class="flex-1 flex flex-col items-center justify-center py-4 text-gray-600 text-xs font-bold uppercase tracking-wider gap-1">
-            <i class="fa-solid fa-bed text-sm"></i>
-            <span>Rest</span>
+            <i class="fa-solid fa-bed text-sm"><span>Rest</span></i>
         </div>
     `;
 }
