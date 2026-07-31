@@ -44,11 +44,17 @@
                 </div>
             </div>
 
-            <!-- Login Button Only -->
-            <a href="/auth/discord" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 transition shadow-lg shadow-red-950/50 border border-red-500/30">
-                <i class="fa-brands fa-discord text-lg"></i>
-                <span>Login with Discord</span>
-            </a>
+            <!-- Docs + Login -->
+            <div class="flex items-center gap-3">
+                <a href="/docs.html" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-gray-300 hover:text-white transition">
+                    <i class="fa-solid fa-scroll text-xs"></i>
+                    <span>Docs</span>
+                </a>
+                <a href="/auth/discord" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 transition shadow-lg shadow-red-950/50 border border-red-500/30">
+                    <i class="fa-brands fa-discord text-lg"></i>
+                    <span>Login with Discord</span>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -124,6 +130,7 @@
         <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
             <p>© Gladiator V. All rights reserved.</p>
             <div class="flex gap-6">
+                <a href="/docs.html" class="hover:text-gray-300 transition">Docs</a>
                 <a href="/privacy.html" class="hover:text-gray-300 transition">Privacy Policy</a>
                 <a href="/terms.html" class="hover:text-gray-300 transition">Terms of Service</a>
             </div>
