@@ -68,8 +68,8 @@ function calculateRank(workoutCount) {
 const DEFAULT_ROUTINES = {
     "Novice / Beginner": {
         "Gym": {
-            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x3"], ["Hammer curls (8 kgs)", "10x3"]],
-            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x3"], ["Hammer curls (8 kgs)", "10x3"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs/17 lbs)", "10x3"], ["Hammer curls (8 kgs/17 lbs)", "10x3"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs/17 lbs)", "10x3"], ["Hammer curls (8 kgs/17 lbs)", "10x3"]],
             "Wednesday": "Rest Day",
             "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "7x1"], ["Seated Cable row", "7x1"]],
             "Friday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "7x1"], ["Seated Cable row", "7x1"]],
@@ -88,8 +88,8 @@ const DEFAULT_ROUTINES = {
     },
     "Bronze Legionnaire": {
         "Gym": {
-            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x2"], ["Hammer curls (8 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"]],
-            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x2"], ["Hammer curls (8 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs/17 lbs)", "10x2"], ["Hammer curls (8 kgs/17 lbs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs/17 lbs)", "10x2"], ["Hammer curls (8 kgs/17 lbs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"]],
             "Wednesday": "Rest Day",
             "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"]],
             "Friday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"]],
@@ -108,11 +108,11 @@ const DEFAULT_ROUTINES = {
     },
     "Iron Vanguard": {
         "Gym": {
-            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x3"], ["Hammer curls (8 kgs)", "10x3"], ["Overhead Triceps extension", "10x3"], ["Preacher curls", "10x3"]],
-            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x3"], ["Hammer curls (8 kgs)", "10x3"], ["Overhead Triceps extension", "10x3"], ["Preacher curls", "10x3"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs/17 lbs)", "10x3"], ["Hammer curls (8 kgs/17 lbs)", "10x3"], ["Overhead Triceps extension", "10x3"], ["Preacher curls", "10x3"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs/17 lbs)", "10x3"], ["Hammer curls (8 kgs/17 lbs)", "10x3"], ["Overhead Triceps extension", "10x3"], ["Preacher curls", "10x3"]],
             "Wednesday": "Rest Day",
-            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x3"], ["Seated Cable row", "10x3"], ["Cable lats pulldown", "10x3"], ["Pec dec", "10x3"], ["Bench press (10-15 kg)", "2x5"]],
-            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x3"], ["Seated Cable row", "10x3"], ["Cable lats pulldown", "10x3"], ["Pec dec", "10x3"], ["Bench press (10-15 kg)", "2x5"]],
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x3"], ["Seated Cable row", "10x3"], ["Cable lats pulldown", "10x3"], ["Pec dec", "10x3"], ["Bench press (10-15 kgs/22-33 lbs)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x3"], ["Seated Cable row", "10x3"], ["Cable lats pulldown", "10x3"], ["Pec dec", "10x3"], ["Bench press (10-15 kgs/22-33 lbs)", "2x5"]],
             "Saturday": [["Arm + neck rotation", "10x1"], ["Weighted squats", "10x2"], ["Leg press", "10x2"], ["Leg extension", "10x2"], ["Incline leg press", "10x2"], ["Seated leg curl", "10x2"]],
             "Sunday": "Rest Day"
         },
@@ -128,11 +128,11 @@ const DEFAULT_ROUTINES = {
     },
     "Steel Centurion": {
         "Gym": {
-            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x3"], ["Hammer curls (8 kgs)", "10x3"], ["Overhead Triceps extension", "10x3"], ["Preacher curls", "10x3"], ["Overhead press", "10x3"]],
-            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x3"], ["Hammer curls (8 kgs)", "10x3"], ["Overhead Triceps extension", "10x3"], ["Preacher curls", "10x3"], ["Overhead press", "10x3"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs/17 lbs)", "10x3"], ["Hammer curls (8 kgs/17 lbs)", "10x3"], ["Overhead Triceps extension", "10x3"], ["Preacher curls", "10x3"], ["Overhead press", "10x3"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs/17 lbs)", "10x3"], ["Hammer curls (8 kgs/17 lbs)", "10x3"], ["Overhead Triceps extension", "10x3"], ["Preacher curls", "10x3"], ["Overhead press", "10x3"]],
             "Wednesday": "Rest Day",
-            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x3"], ["Seated Cable row", "10x3"], ["Cable lats pulldown", "10x3"], ["Pec dec", "10x3"], ["Bench press (20-40 kg)", "2x5"]],
-            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x3"], ["Seated Cable row", "10x3"], ["Cable lats pulldown", "10x3"], ["Pec dec", "10x3"], ["Bench press (20-40 kg)", "2x5"]],
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x3"], ["Seated Cable row", "10x3"], ["Cable lats pulldown", "10x3"], ["Pec dec", "10x3"], ["Bench press (20-40 kgs/44-88 lbs)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x3"], ["Seated Cable row", "10x3"], ["Cable lats pulldown", "10x3"], ["Pec dec", "10x3"], ["Bench press (20-40 kgs/44-88 lbs)", "2x5"]],
             "Saturday": [["Arm + neck rotation", "10x1"], ["Weighted squats", "10x3"], ["Leg press", "10x3"], ["Leg extension", "10x3"], ["Incline leg press", "10x3"], ["Seated leg curl", "10x3"]],
             "Sunday": "Rest Day"
         },
@@ -148,11 +148,11 @@ const DEFAULT_ROUTINES = {
     },
     "Gilded Champion": {
         "Gym": {
-            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x4"], ["Hammer curls (8 kgs)", "10x4"], ["Overhead Triceps extension", "10x4"], ["Preacher curls", "10x4"], ["Overhead press", "10x4"]],
-            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "10x4"], ["Hammer curls (8 kgs)", "10x4"], ["Overhead Triceps extension", "10x4"], ["Preacher curls", "10x4"], ["Overhead press", "10x4"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs/17 lbs)", "10x4"], ["Hammer curls (8 kgs/17 lbs)", "10x4"], ["Overhead Triceps extension", "10x4"], ["Preacher curls", "10x4"], ["Overhead press", "10x4"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs/17 lbs)", "10x4"], ["Hammer curls (8 kgs/17 lbs)", "10x4"], ["Overhead Triceps extension", "10x4"], ["Preacher curls", "10x4"], ["Overhead press", "10x4"]],
             "Wednesday": "Rest Day",
-            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x4"], ["Seated Cable row", "10x4"], ["Cable lats pulldown", "10x4"], ["Pec dec", "10x4"], ["Bench press (20-40 kg)", "2x5"]],
-            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x4"], ["Seated Cable row", "10x4"], ["Cable lats pulldown", "10x4"], ["Pec dec", "10x4"], ["Bench press (20-40 kg)", "2x5"]],
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x4"], ["Seated Cable row", "10x4"], ["Cable lats pulldown", "10x4"], ["Pec dec", "10x4"], ["Bench press (20-40 kgs/44-88 lbs)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Crunches / Ab crunch machine", "10x4"], ["Seated Cable row", "10x4"], ["Cable lats pulldown", "10x4"], ["Pec dec", "10x4"], ["Bench press (20-40 kgs/44-88 lbs)", "2x5"]],
             "Saturday": [["Arm + neck rotation", "10x1"], ["Weighted squats", "10x3"], ["Leg press", "10x3"], ["Leg extension", "10x3"], ["Incline leg press", "10x3"], ["Seated leg curl", "10x3"]],
             "Sunday": "Rest Day"
         },
@@ -168,11 +168,11 @@ const DEFAULT_ROUTINES = {
     },
     "Arena Master": {
         "Gym": {
-            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "15x3"], ["Hammer curls (8 kgs)", "15x3"], ["Overhead Triceps extension", "15x3"], ["Preacher curls", "15x3"], ["Overhead press", "15x3"]],
-            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs)", "15x3"], ["Hammer curls (8 kgs)", "15x3"], ["Overhead Triceps extension", "15x3"], ["Preacher curls", "15x3"], ["Overhead press", "15x3"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs/17 lbs)", "15x3"], ["Hammer curls (8 kgs/17 lbs)", "15x3"], ["Overhead Triceps extension", "15x3"], ["Preacher curls", "15x3"], ["Overhead press", "15x3"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (8 kgs/17 lbs)", "15x3"], ["Hammer curls (8 kgs/17 lbs)", "15x3"], ["Overhead Triceps extension", "15x3"], ["Preacher curls", "15x3"], ["Overhead press", "15x3"]],
             "Wednesday": "Rest Day",
-            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x2"], ["Crunches / Ab crunch machine", "15x3"], ["Seated Cable row", "15x3"], ["Cable lats pulldown", "15x3"], ["Pec dec", "15x3"], ["Bench press (20-40 kg)", "2x5"]],
-            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x2"], ["Crunches / Ab crunch machine", "15x3"], ["Seated Cable row", "15x3"], ["Cable lats pulldown", "15x3"], ["Pec dec", "15x3"], ["Bench press (20-40 kg)", "2x5"]],
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x2"], ["Crunches / Ab crunch machine", "15x3"], ["Seated Cable row", "15x3"], ["Cable lats pulldown", "15x3"], ["Pec dec", "15x3"], ["Bench press (20-40 kgs/44-88 lbs)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x2"], ["Crunches / Ab crunch machine", "15x3"], ["Seated Cable row", "15x3"], ["Cable lats pulldown", "15x3"], ["Pec dec", "15x3"], ["Bench press (20-40 kgs/44-88 lbs)", "2x5"]],
             "Saturday": [["Weighted squats", "10x3"], ["Leg press", "10x3"], ["Leg extension", "10x3"], ["Incline leg press", "10x3"], ["Seated leg curl", "10x3"]],
             "Sunday": "Rest Day"
         },
@@ -188,11 +188,11 @@ const DEFAULT_ROUTINES = {
     },
     "Gold Gladiator": {
         "Gym": {
-            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
-            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs/22 lbs)", "10x2"], ["Hammer curls (10 kgs/22 lbs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs/22 lbs)", "10x2"], ["Hammer curls (10 kgs/22 lbs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
             "Wednesday": "Rest Day",
-            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
-            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kgs/44-88 lbs)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kgs/44-88 lbs)", "2x5"]],
             "Saturday": [["Weighted squats", "10x3"], ["Leg press", "10x3"], ["Leg extension", "10x3"], ["Incline leg press", "10x3"], ["Seated leg curl", "10x3"]],
             "Sunday": "Rest Day"
         },
@@ -208,11 +208,11 @@ const DEFAULT_ROUTINES = {
     },
     "Apex Centurion": {
         "Gym": {
-            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
-            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs/22 lbs)", "10x2"], ["Hammer curls (10 kgs/22 lbs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs/22 lbs)", "10x2"], ["Hammer curls (10 kgs/22 lbs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
             "Wednesday": "Rest Day",
-            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
-            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kgs/44-88 lbs)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kgs/44-88 lbs)", "2x5"]],
             "Saturday": [["Weighted squats", "10x3"], ["Leg press", "10x3"], ["Leg extension", "10x3"], ["Incline leg press", "10x3"], ["Seated leg curl", "10x3"]],
             "Sunday": "Rest Day"
         },
@@ -228,11 +228,11 @@ const DEFAULT_ROUTINES = {
     },
     "Titan Ascendant": {
         "Gym": {
-            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
-            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs/22 lbs)", "10x2"], ["Hammer curls (10 kgs/22 lbs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs/22 lbs)", "10x2"], ["Hammer curls (10 kgs/22 lbs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
             "Wednesday": "Rest Day",
-            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
-            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kgs/44-88 lbs)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kgs/44-88 lbs)", "2x5"]],
             "Saturday": [["Weighted squats", "10x3"], ["Leg press", "10x3"], ["Leg extension", "10x3"], ["Incline leg press", "10x3"], ["Seated leg curl", "10x3"]],
             "Sunday": "Rest Day"
         },
@@ -248,11 +248,11 @@ const DEFAULT_ROUTINES = {
     },
     "Gladiator Maximus": {
         "Gym": {
-            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
-            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs)", "10x2"], ["Hammer curls (10 kgs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Monday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs/22 lbs)", "10x2"], ["Hammer curls (10 kgs/22 lbs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
+            "Tuesday": [["Arm + neck rotation", "10x1"], ["Dumbbell bicep curls (10 kgs/22 lbs)", "10x2"], ["Hammer curls (10 kgs/22 lbs)", "10x2"], ["Overhead Triceps extension", "10x2"], ["Preacher curls", "10x2"], ["Overhead press", "10x2"]],
             "Wednesday": "Rest Day",
-            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
-            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kg)", "2x5"]],
+            "Thursday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kgs/44-88 lbs)", "2x5"]],
+            "Friday": [["Arm + neck rotation", "10x1"], ["Pull ups", "10x3"], ["Crunches / Ab crunch machine", "10x2"], ["Seated Cable row", "10x2"], ["Cable lats pulldown", "10x2"], ["Pec dec", "10x2"], ["Bench press (20-40 kgs/44-88 lbs)", "2x5"]],
             "Saturday": [["Weighted squats", "10x3"], ["Leg press", "10x3"], ["Leg extension", "10x3"], ["Incline leg press", "10x3"], ["Seated leg curl", "10x3"]],
             "Sunday": "Rest Day"
         },
