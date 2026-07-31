@@ -687,11 +687,9 @@ app.post('/api/flex/add', checkAuth, async (req, res) => {
             { upsert: true }
         );
 
-        await db.collection('user_stats').updateOne(
-            { _id: targetId },
-            { $inc: { workout_count: 1 } },
-            { upsert: true }
-        );
+        // NOTE: workout_count (Total Workouts / rank) is tracked separately by
+        // actual logged workouts. Adding a flex (a skill/progress entry) must
+        // NOT increment it — that was causing Total Workouts to go up on flex add.
 
         res.json({ success: true, message: 'Flex logged successfully!', entry: newEntry });
     } catch (error) {
