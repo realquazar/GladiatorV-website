@@ -328,23 +328,16 @@ app.get('/auth/logout', (req, res) => {
 app.get('/api/dashboard', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
-        const numericUserId = parseInt(userId);
 
-        const userStats = await db.collection('user_stats').findOne({
-            $or: [{ _id: userId }, { _id: numericUserId }]
-        });
+        const userStats = await db.collection('user_stats').findOne({ _id: userId });
 
-        const userFlexDoc = await db.collection('user_flexes').findOne({
-            $or: [{ _id: userId }, { _id: numericUserId }]
-        });
+        const userFlexDoc = await db.collection('user_flexes').findOne({ _id: userId });
 
         const flexesList = userFlexDoc?.flexes || [];
         const activeFlexes = flexesList.filter(f => !f.exercise.includes('(archived)'));
         const archivedFlexes = flexesList.filter(f => f.exercise.includes('(archived)'));
 
-        const customWorkoutDoc = await db.collection('custom_workouts_v2').findOne({
-            $or: [{ _id: userId }, { _id: numericUserId }]
-        });
+        const customWorkoutDoc = await db.collection('custom_workouts_v2').findOne({ _id: userId });
 
         const schedules = customWorkoutDoc?.schedules || [];
 
@@ -386,10 +379,7 @@ app.get('/api/dashboard', checkAuth, async (req, res) => {
 
 // Helper to find custom workout document
 async function getCustomWorkoutDoc(userId) {
-    const numericUserId = parseInt(userId);
-    return await db.collection('custom_workouts_v2').findOne({
-        $or: [{ _id: userId }, { _id: numericUserId }]
-    });
+    return await db.collection('custom_workouts_v2').findOne({ _id: userId });
 }
 
 // --- API Endpoints for Custom Workout Schedules & Exercises ---
@@ -397,7 +387,6 @@ async function getCustomWorkoutDoc(userId) {
 app.post('/api/workout/schedule/add', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
-        const numericUserId = parseInt(userId);
         const { name } = req.body;
 
         if (!name || !name.trim()) {
@@ -412,7 +401,7 @@ app.post('/api/workout/schedule/add', checkAuth, async (req, res) => {
         };
 
         const userDoc = await getCustomWorkoutDoc(userId);
-        const targetId = userDoc ? userDoc._id : numericUserId;
+        const targetId = userDoc ? userDoc._id : userId;
 
         await db.collection('custom_workouts_v2').updateOne(
             { _id: targetId },
@@ -599,10 +588,9 @@ app.delete('/api/workout/exercise/delete', checkAuth, async (req, res) => {
 app.delete('/api/workout/delete', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
-        const numericUserId = parseInt(userId);
 
         await db.collection('custom_workouts_v2').updateOne(
-            { $or: [{ _id: userId }, { _id: numericUserId }] },
+            { _id: userId },
             { $set: { schedules: [] } }
         );
 
@@ -637,16 +625,12 @@ function getGraphDate() {
 }
 
 async function getUserFlexDoc(userId) {
-    const numericUserId = parseInt(userId);
-    return await db.collection('user_flexes').findOne({
-        $or: [{ _id: userId }, { _id: numericUserId }]
-    });
+    return await db.collection('user_flexes').findOne({ _id: userId });
 }
 
 app.post('/api/flex/add', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
-        const numericUserId = parseInt(userId);
         const { exercise, stat } = req.body;
 
         if (!exercise || !stat) {
@@ -679,7 +663,7 @@ app.post('/api/flex/add', checkAuth, async (req, res) => {
         };
         flexes.push(newEntry);
 
-        const targetId = userDoc ? userDoc._id : numericUserId;
+        const targetId = userDoc ? userDoc._id : userId;
         await db.collection('user_flexes').updateOne(
             { _id: targetId },
             { $set: { flexes: flexes } },
@@ -687,7 +671,7 @@ app.post('/api/flex/add', checkAuth, async (req, res) => {
         );
 
         await db.collection('user_stats').updateOne(
-            { $or: [{ _id: userId }, { _id: numericUserId }] },
+            { _id: targetId },
             { $inc: { workout_count: 1 } },
             { upsert: true }
         );
