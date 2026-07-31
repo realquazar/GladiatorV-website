@@ -601,6 +601,23 @@ app.delete('/api/workout/delete', checkAuth, async (req, res) => {
     }
 });
 
+app.post('/api/workout/reset-count', checkAuth, async (req, res) => {
+    try {
+        const userId = req.session.user.id;
+
+        await db.collection('user_stats').updateOne(
+            { _id: userId },
+            { $set: { workout_count: 0 } },
+            { upsert: true }
+        );
+
+        res.json({ success: true, message: 'Workout count has been reset to 0.' });
+    } catch (error) {
+        console.error('Error resetting workout count:', error);
+        res.status(500).json({ error: 'Failed to reset workout count.' });
+    }
+});
+
 // --- Flex Endpoints ---
 function normalizeName(name) {
     return name.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();

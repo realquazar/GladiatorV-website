@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             closeAddExerciseModal();
             closeEditExerciseModal();
             closeDeleteScheduleModal();
+            closeResetWorkoutModal();
         }
     });
 
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalIds = [
             'addFlexModal', 'editFlexModal', 'deleteFlexModal', 'graphModal',
             'addScheduleModal', 'renameScheduleModal', 'addExerciseModal',
-            'editExerciseModal', 'deleteScheduleModal'
+            'editExerciseModal', 'deleteScheduleModal', 'resetWorkoutModal'
         ];
         modalIds.forEach(id => {
             const modal = document.getElementById(id);
@@ -415,6 +416,34 @@ async function confirmDeleteFlex() {
             console.error('Error deleting flex:', err);
             showToast('Error deleting flex.', 'error');
         }
+    }
+}
+
+// 5. RESET WORKOUT COUNT MODAL HANDLERS
+function openResetWorkoutModal() {
+    const modal = document.getElementById('resetWorkoutModal');
+    if (modal) modal.classList.remove('hidden');
+}
+
+function closeResetWorkoutModal() {
+    const modal = document.getElementById('resetWorkoutModal');
+    if (modal) modal.classList.add('hidden');
+}
+
+async function confirmResetWorkout() {
+    try {
+        const res = await fetch('/api/workout/reset-count', { method: 'POST' });
+        const result = await res.json();
+        if (result.success) {
+            closeResetWorkoutModal();
+            showToast('🔄 Workout count reset. Back to Level 1: Novice / Beginner.');
+            fetchDashboardData();
+        } else {
+            showToast(result.error || 'Failed to reset workout count.', 'error');
+        }
+    } catch (err) {
+        console.error('Error resetting workout count:', err);
+        showToast('Error resetting workout count.', 'error');
     }
 }
 
