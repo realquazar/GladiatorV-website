@@ -341,7 +341,7 @@ app.get('/api/dashboard', checkAuth, async (req, res) => {
 
         const schedules = customWorkoutDoc?.schedules || [];
 
-        const flexCount = userStats?.workout_count || flexesList.length || 0;
+        const flexCount = userStats?.workout_count ?? 0;
         const rank = calculateRank(flexCount);
 
         const defaultRoutine = DEFAULT_ROUTINES[rank] || DEFAULT_ROUTINES["Novice / Beginner"];
