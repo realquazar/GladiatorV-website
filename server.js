@@ -804,14 +804,19 @@ app.delete('/api/flex/delete', checkAuth, async (req, res) => {
     try {
         const userId = req.session.user.id;
         const exercise = req.body.exercise || req.body.targetItem?.exercise;
-        const raw_ts = req.body.raw_ts || req.body.targetItem?.raw_ts;
         const userDoc = await getUserFlexDoc(userId);
         if (!userDoc || !userDoc.flexes) return res.status(404).json({ error: 'No flex records found.' });
 
+        const cleanTargetName = exercise.replace('(archived)', '').trim();
+        const targetNorm = normalizeName(cleanTargetName);
+
         const initialLength = userDoc.flexes.length;
+        // Cascade delete: remove every entry (active AND archived) sharing this
+        // exercise name, so deleting "Lift" also clears out its archived history
+        // instead of leaving orphaned duplicates behind.
         const updatedFlexes = userDoc.flexes.filter(f => {
-            if (raw_ts) return !(f.exercise === exercise && f.raw_ts === raw_ts);
-            return f.exercise !== exercise;
+            const cleanName = f.exercise.replace('(archived)', '').trim();
+            return normalizeName(cleanName) !== targetNorm;
         });
 
         if (updatedFlexes.length === initialLength) return res.status(404).json({ error: 'Flex entry not found.' });
