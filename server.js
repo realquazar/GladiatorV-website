@@ -689,7 +689,7 @@ app.post('/api/flex/add', checkAuth, async (req, res) => {
 
         // NOTE: workout_count (Total Workouts / rank) is tracked separately by
         // actual logged workouts. Adding a flex (a skill/progress entry) must
-        // NOT increment it — that was causing Total Workouts to go up on flex add.
+        // NOT increment it. That was causing Total Workouts to go up on flex add.
 
         res.json({ success: true, message: 'Flex logged successfully!', entry: newEntry });
     } catch (error) {

@@ -4,8 +4,9 @@
  * Why: Discord snowflake IDs are 17-19 digit integers. The bot (Python) stores
  * them as exact big integers, which Mongo/BSON handles fine. The old dashboard
  * code converted them with JS `parseInt`, which silently rounds any ID over
- * ~16 digits to the nearest representable double — a DIFFERENT number than the
- * bot's exact integer. That's why some users' data synced and others' didn't.
+ * ~16 digits to the nearest representable double. That's a different number
+ * than the bot's exact integer, which is why some users' data synced and
+ * others' didn't.
  *
  * The fix standardizes on storing these IDs as STRINGS everywhere (bot and
  * website), since strings never lose precision. This script rewrites your
