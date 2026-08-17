@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             closeEditExerciseModal();
             closeDeleteScheduleModal();
             closeResetWorkoutModal();
+            closeDeleteReminderModal();
         }
     });
 
@@ -28,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalIds = [
             'addFlexModal', 'editFlexModal', 'deleteFlexModal', 'graphModal',
             'addScheduleModal', 'renameScheduleModal', 'addExerciseModal',
-            'editExerciseModal', 'deleteScheduleModal', 'resetWorkoutModal'
+            'editExerciseModal', 'deleteScheduleModal', 'resetWorkoutModal',
+            'deleteReminderModal'
         ];
         modalIds.forEach(id => {
             const modal = document.getElementById(id);
@@ -73,6 +75,9 @@ async function fetchDashboardData() {
 
         // 5. Render Diet Table
         renderDietTable(data.diet);
+
+        // 6. Render Workout Reminders
+        renderReminders(data.reminders || []);
 
     } catch (error) {
         console.error('Error loading dashboard data:', error);
@@ -1163,6 +1168,105 @@ function renderDietTable(diet) {
             <td class="py-3.5 px-4 text-gray-400">${item.calories} kcal</td>
         </tr>
     `).join('');
+}
+
+// -------------------------------------------------------------------------
+// WORKOUT REMINDERS (view / delete only - adding one is Discord-only, via
+// /remindworkout in the target server's channel)
+// -------------------------------------------------------------------------
+const REMINDER_DAY_SHORT = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+let allReminders = [];
+let pendingDeleteReminderGuildId = null;
+
+function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str ?? '';
+    return div.innerHTML;
+}
+
+function formatReminderDays(days) {
+    if (!Array.isArray(days) || days.length === 0) return 'No days set';
+    return [...days].sort((a, b) => a - b).map(d => REMINDER_DAY_SHORT[d] || '?').join(', ');
+}
+
+function renderReminders(reminders) {
+    allReminders = reminders;
+    const container = document.getElementById('remindersContainer');
+    if (!container) return;
+
+    if (!reminders.length) {
+        container.innerHTML = `
+            <div class="col-span-full text-center py-8 text-gray-500 text-sm">
+                <i class="fa-solid fa-bell-slash text-2xl mb-2 block"></i>
+                You haven't set any workout reminders yet.
+            </div>
+        `;
+        return;
+    }
+
+    container.innerHTML = reminders.map(r => {
+        const iconHtml = r.guild_icon_url
+            ? `<img src="${escapeHtml(r.guild_icon_url)}" alt="" class="w-12 h-12 rounded-xl object-cover border border-gray-800 flex-shrink-0">`
+            : `<div class="w-12 h-12 rounded-xl bg-[#0d0d10] border border-gray-800 flex items-center justify-center flex-shrink-0">
+                   <i class="fa-brands fa-discord text-gray-600 text-lg"></i>
+               </div>`;
+
+        return `
+            <div class="bg-[#16161d] border border-gray-800/80 rounded-2xl p-4 flex items-start gap-3">
+                ${iconHtml}
+                <div class="flex-1 min-w-0">
+                    <div class="font-bold text-white text-sm truncate" title="${escapeHtml(r.guild_name)}">${escapeHtml(r.guild_name)}</div>
+                    <div class="text-xs text-gray-400 mt-0.5 truncate">#${escapeHtml(r.channel_name)}</div>
+                    <div class="text-xs text-gray-400 mt-1.5"><i class="fa-regular fa-clock mr-1"></i>${escapeHtml(r.time_range_text)} (${escapeHtml(r.timezone)})</div>
+                    <div class="text-xs text-gray-500 mt-1"><i class="fa-regular fa-calendar mr-1"></i>${formatReminderDays(r.training_days)}</div>
+                </div>
+                <button onclick="openDeleteReminderModal('${escapeHtml(r.guild_id)}')"
+                    class="text-gray-500 hover:text-red-400 transition flex-shrink-0" title="Remove reminder">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </div>
+        `;
+    }).join('');
+}
+
+function openDeleteReminderModal(guildId) {
+    pendingDeleteReminderGuildId = guildId;
+    const reminder = allReminders.find(r => r.guild_id === guildId);
+    const titleEl = document.getElementById('deleteReminderModalTitle');
+    const descEl = document.getElementById('deleteReminderModalDesc');
+    if (titleEl) titleEl.textContent = reminder ? `Remove reminder for ${reminder.guild_name}?` : 'Remove Reminder?';
+    if (descEl) descEl.textContent = 'You will no longer be pinged for workouts in this server. You can always set a new one with /remindworkout.';
+
+    const modal = document.getElementById('deleteReminderModal');
+    if (modal) modal.classList.remove('hidden');
+}
+
+function closeDeleteReminderModal() {
+    const modal = document.getElementById('deleteReminderModal');
+    if (modal) modal.classList.add('hidden');
+    pendingDeleteReminderGuildId = null;
+}
+
+async function confirmDeleteReminder() {
+    if (!pendingDeleteReminderGuildId) return;
+    try {
+        const res = await fetch('/api/reminders', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ guild_id: pendingDeleteReminderGuildId })
+        });
+        const result = await res.json();
+        if (result.success) {
+            closeDeleteReminderModal();
+            showToast('Reminder removed.');
+            fetchDashboardData();
+        } else {
+            showToast(result.error || 'Failed to remove reminder.', 'error');
+        }
+    } catch (err) {
+        console.error('Error deleting reminder:', err);
+        showToast('Error removing reminder.', 'error');
+    }
 }
 
 // Helper utility for rest day markup

@@ -5,7 +5,7 @@ dns.setServers(['8.8.8.8', '1.1.1.1']);
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
-const { MongoClient } = require('mongodb');
+const { MongoClient, Long } = require('mongodb');
 const axios = require('axios');
 const path = require('path');
 
@@ -32,12 +32,17 @@ app.use(session({
 // MongoDB Client
 const mongoClient = new MongoClient(process.env.MONGO_URI);
 let db;
+let remindersDb;
 
 async function connectDB() {
     try {
         await mongoClient.connect();
         db = mongoClient.db('GymBotDB');
-        console.log('✅ Connected to MongoDB (GymBotDB)');
+        // The bot's reminder_cog.py stores reminders in a separate database
+        // from everything else (gladiator_db, not GymBotDB) - keep a second
+        // handle for it rather than assuming it's in the same place.
+        remindersDb = mongoClient.db('gladiator_db');
+        console.log('✅ Connected to MongoDB (GymBotDB + gladiator_db)');
     } catch (err) {
         console.error('❌ MongoDB Connection Error:', err);
     }
@@ -324,6 +329,32 @@ app.get('/auth/logout', (req, res) => {
     });
 });
 
+// --- Workout Reminders (view/delete only from the website - adding a new one
+// must be done via /remindworkout in Discord, this is enforced by simply
+// never exposing a create/update route here) ---
+// NOTE: guild_id is stored by the bot as a raw 64-bit int (unlike user_id,
+// which is stored as a string). Discord snowflakes exceed what a JS Number
+// can represent exactly, so we explicitly disable promoteLongs on these
+// queries and convert guild_id to a string ourselves - this is the same
+// precision issue migrate_ids_to_strings.js exists to fix, just handled at
+// read-time here instead, since the bot's guild_id field was never migrated.
+async function getUserReminders(userId) {
+    const cursor = remindersDb.collection('workout_reminders').find(
+        { user_id: userId },
+        { promoteLongs: false }
+    );
+    const docs = await cursor.toArray();
+    return docs.map(r => ({
+        guild_id: r.guild_id.toString(),
+        guild_name: r.guild_name || 'Unknown Server',
+        guild_icon_url: r.guild_icon_url || null,
+        channel_name: r.channel_name || 'unknown',
+        time_range_text: r.time_range_text || 'Unknown time',
+        timezone: r.timezone || 'UTC',
+        training_days: r.training_days || [0, 1, 3, 4, 5]
+    }));
+}
+
 // API Dashboard Route
 app.get('/api/dashboard', checkAuth, async (req, res) => {
     try {
@@ -345,6 +376,13 @@ app.get('/api/dashboard', checkAuth, async (req, res) => {
         const rank = calculateRank(flexCount);
 
         const defaultRoutine = DEFAULT_ROUTINES[rank] || DEFAULT_ROUTINES["Novice / Beginner"];
+
+        let reminders = [];
+        try {
+            reminders = await getUserReminders(userId);
+        } catch (e) {
+            console.error('Error fetching reminders:', e);
+        }
 
         const dietList = [
             { id: 1, name: "Chicken Breast (200g)", protein: 62, calories: 330, category: "Non-Veg" },
@@ -368,7 +406,8 @@ app.get('/api/dashboard', checkAuth, async (req, res) => {
             archivedFlexes: archivedFlexes,
             defaultRoutine: defaultRoutine,
             schedules: schedules,
-            diet: dietList
+            diet: dietList,
+            reminders: reminders
         });
 
     } catch (error) {
@@ -837,6 +876,33 @@ app.delete('/api/flex/clear-all', checkAuth, async (req, res) => {
         res.json({ success: true, message: 'All flexes cleared.' });
     } catch (error) {
         res.status(500).json({ error: 'Failed to clear flexes.' });
+    }
+});
+
+// Deletes one server's reminder. There is deliberately no corresponding
+// POST/create route here - adding a reminder can only be done via
+// /remindworkout in a Discord server channel.
+app.delete('/api/reminders', checkAuth, async (req, res) => {
+    try {
+        const userId = req.session.user.id;
+        const guildIdStr = req.body.guild_id;
+        if (!guildIdStr) {
+            return res.status(400).json({ error: 'guild_id is required.' });
+        }
+
+        const guildIdLong = Long.fromString(String(guildIdStr));
+        const result = await remindersDb.collection('workout_reminders').deleteOne({
+            user_id: userId,
+            guild_id: guildIdLong
+        });
+
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ error: 'Reminder not found.' });
+        }
+        res.json({ success: true, message: 'Reminder deleted successfully.' });
+    } catch (error) {
+        console.error('Error deleting reminder:', error);
+        res.status(500).json({ error: 'Failed to delete reminder.' });
     }
 });
 

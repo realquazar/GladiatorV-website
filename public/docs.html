@@ -101,7 +101,7 @@
             </h1>
 
             <p class="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                The complete reference for all 10 Gladiator V commands, covering what each one does, exactly how to use it,
+                The complete reference for all 11 Gladiator V commands, covering what each one does, exactly how to use it,
                 and which ones sync live with your <a href="/dashboard.html" class="text-emerald-400 hover:text-emerald-300 underline underline-offset-2">web dashboard</a>.
             </p>
         </div>
@@ -115,6 +115,7 @@
             <a href="#myworkout" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/myworkout</a>
             <a href="#resetworkout" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/resetworkout</a>
             <a href="#remindworkout" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/remindworkout</a>
+            <a href="#myreminders" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/myreminders</a>
             <a href="#levels" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/levels</a>
             <a href="#flex" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/flex</a>
             <a href="#diet" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/diet</a>
@@ -136,6 +137,7 @@
                     <a data-toc href="#myworkout" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/myworkout</a>
                     <a data-toc href="#resetworkout" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/resetworkout</a>
                     <a data-toc href="#remindworkout" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/remindworkout</a>
+                    <a data-toc href="#myreminders" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/myreminders</a>
                     <a data-toc href="#levels" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/levels</a>
                     <a data-toc href="#flex" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/flex</a>
                     <a data-toc href="#diet" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/diet</a>
@@ -271,24 +273,61 @@
                                 <i class="fa-solid fa-bell text-red-500 text-sm"></i>/remindworkout
                             </span>
                             <span class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only visible to you</span>
+                            <span class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-bold uppercase tracking-wide">
+                                <i class="fa-solid fa-arrows-rotate text-[10px] mr-1"></i>Synced with dashboard
+                            </span>
                         </div>
                         <h2 class="font-display text-white font-bold text-xl mb-2">Never let the arena forget you</h2>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
                             Sets a daily ping 5 minutes before your chosen workout time, in your own timezone, sent to a channel
-                            of your choice. If you already have one set, you'll be offered <strong class="text-gray-200">Update</strong>
-                            or <strong class="text-gray-200">Delete</strong> instead of stacking a second reminder.
+                            of your choice. You can set one reminder per server, in as many different servers as you like,
+                            each with its own time, timezone, channel, and days. Running this again in a server where you
+                            already have a reminder set offers <strong class="text-gray-200">Update</strong> or
+                            <strong class="text-gray-200">Delete</strong> for that server, instead of stacking a second one,
+                            this keeps things from being used to spam a channel with duplicate pings.
                         </p>
                         <div class="text-sm text-gray-400 space-y-2 mb-4">
                             <p><code class="font-mono text-emerald-400">/remindworkout time:</code> e.g. <span class="text-gray-300">6:00 AM</span></p>
+                            <p><code class="font-mono text-emerald-400">timezone:</code> optional, defaults to GMT (UTC+0)</p>
                             <p><code class="font-mono text-emerald-400">channel:</code> optional, defaults to the channel you ran the command in</p>
+                            <p><code class="font-mono text-emerald-400">days:</code> optional, e.g. <span class="text-gray-300">Mon, Wed, Fri</span>. Defaults to Monday, Tuesday, Thursday, Friday, Saturday</p>
                         </div>
-                        <p class="text-gray-500 text-xs italic">The reminder ping itself includes its own Delete Reminder and How to Update Time buttons.</p>
+                        <p class="text-gray-500 text-xs italic">The reminder ping itself includes Delete Reminder and How to Update Time buttons, plus a moderator-only delete option for server staff.</p>
                     </div>
                 </section>
 
-                <!-- 6. /levels -->
-                <section id="levels" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
+                <!-- 6. /myreminders -->
+                <section id="myreminders" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
                     <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">06</div>
+                    <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
+                                <i class="fa-solid fa-list-check text-red-500 text-sm"></i>/myreminders
+                            </span>
+                            <span class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only visible to you</span>
+                            <span class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-bold uppercase tracking-wide">
+                                <i class="fa-solid fa-arrows-rotate text-[10px] mr-1"></i>Synced with dashboard
+                            </span>
+                        </div>
+                        <h2 class="font-display text-white font-bold text-xl mb-2">Every reminder, in one place</h2>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Lists every workout reminder you've set across every server, with the time, timezone, days,
+                            and channel for each. Since you can only manage a server's reminder from inside that server
+                            with <code class="font-mono text-gray-300">/remindworkout</code>, this command is the one place
+                            to see and remove all of them at once, no matter which server you're currently in.
+                        </p>
+                        <ol class="text-sm text-gray-400 space-y-1.5 list-decimal list-inside">
+                            <li>Run <code class="font-mono text-emerald-400">/myreminders</code></li>
+                            <li>Pick a reminder from the dropdown to remove it</li>
+                            <li>Confirm the removal</li>
+                        </ol>
+                        <p class="text-gray-500 text-xs mt-4 italic">The same list is also visible on your web dashboard, where you can remove reminders too, adding a new one is Discord-only.</p>
+                    </div>
+                </section>
+
+                <!-- 7. /levels -->
+                <section id="levels" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
+                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">07</div>
                     <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
                             <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
@@ -317,9 +356,9 @@
                     </div>
                 </section>
 
-                <!-- 7. /flex -->
+                <!-- 8. /flex -->
                 <section id="flex" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">07</div>
+                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">08</div>
                     <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
                             <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
@@ -344,9 +383,9 @@
                     </div>
                 </section>
 
-                <!-- 8. /diet -->
+                <!-- 9. /diet -->
                 <section id="diet" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">08</div>
+                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">09</div>
                     <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
                             <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
@@ -367,9 +406,9 @@
                     </div>
                 </section>
 
-                <!-- 9. /hype -->
+                <!-- 10. /hype -->
                 <section id="hype" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">09</div>
+                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">10</div>
                     <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
                             <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
@@ -385,9 +424,9 @@
                     </div>
                 </section>
 
-                <!-- 10. /help -->
+                <!-- 11. /help -->
                 <section id="help" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-emerald-600 to-emerald-800 text-white font-display font-bold text-lg border border-emerald-400/30">10</div>
+                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-emerald-600 to-emerald-800 text-white font-display font-bold text-lg border border-emerald-400/30">11</div>
                     <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-emerald-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
                             <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
