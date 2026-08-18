@@ -1216,7 +1216,9 @@ function renderReminders(reminders) {
                 ${iconHtml}
                 <div class="flex-1 min-w-0">
                     <div class="font-bold text-white text-sm truncate" title="${escapeHtml(r.guild_name)}">${escapeHtml(r.guild_name)}</div>
-                    <div class="text-xs text-gray-400 mt-0.5 truncate">#${escapeHtml(r.channel_name)}</div>
+                    <span class="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-md bg-[#5865f2]/30 text-white text-xs font-medium max-w-full truncate">
+                        <i class="fa-solid fa-hashtag text-[10px] opacity-80 shrink-0"></i><span class="truncate">${escapeHtml(r.channel_name)}</span>
+                    </span>
                     <div class="text-xs text-gray-400 mt-1.5"><i class="fa-regular fa-clock mr-1"></i>${escapeHtml(r.time_range_text)} (${escapeHtml(r.timezone)})</div>
                     <div class="text-xs text-gray-500 mt-1"><i class="fa-regular fa-calendar mr-1"></i>${formatReminderDays(r.training_days)}</div>
                 </div>
