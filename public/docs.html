@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gladiator V | Command Codex</title>
-    <meta name="description" content="The complete command reference for Gladiator V, covering every slash command, what it does, and how it syncs with the web dashboard.">
+    <meta name="description"
+        content="The complete command reference for Gladiator V, covering every slash command, what it does, and how it syncs with the web dashboard.">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/radon_pfp.png">
 
@@ -34,7 +36,9 @@
     <!-- Display + Mono webfonts: inscription-style serif for headings, monospace for command chips -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -46,35 +50,47 @@
         .medallion {
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         }
+
         .toc-link.active {
             color: #fff;
             border-left-color: #dc2626;
             background: rgba(220, 38, 38, 0.08);
         }
+
         @media (prefers-reduced-motion: reduce) {
-            * { scroll-behavior: auto !important; }
+            * {
+                scroll-behavior: auto !important;
+            }
         }
-        html { scroll-behavior: smooth; }
+
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
+
 <body class="bg-obsidian text-gray-100 font-sans min-h-screen selection:bg-red-900 selection:text-white">
 
     <!-- Navigation Bar -->
     <nav class="border-b border-red-900/30 bg-[#0d0d10]/80 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <a href="/" class="flex items-center gap-3">
-                <img src="/radon_pfp.png" alt="Radon Logo" class="w-10 h-10 rounded-xl border border-red-500/40 object-cover shadow-[0_0_15px_rgba(220,38,38,0.3)]">
-                <div class="text-2xl font-black tracking-wider uppercase bg-gradient-to-r from-red-500 via-rose-400 to-red-600 bg-clip-text text-transparent">
+                <img src="/radon_pfp.png" alt="Radon Logo"
+                    class="w-10 h-10 rounded-xl border border-red-500/40 object-cover shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+                <div
+                    class="text-2xl font-black tracking-wider uppercase bg-gradient-to-r from-red-500 via-rose-400 to-red-600 bg-clip-text text-transparent">
                     Gladiator <span class="text-emerald-400">V</span>
                 </div>
             </a>
 
             <div class="flex items-center gap-3">
-                <a href="/" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-gray-300 hover:text-white transition">
+                <a href="/"
+                    class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-gray-300 hover:text-white transition">
                     <i class="fa-solid fa-house text-xs"></i>
                     <span>Home</span>
                 </a>
-                <a href="/auth/discord" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 transition shadow-lg shadow-red-950/50 border border-red-500/30">
+                <a href="/auth/discord"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 transition shadow-lg shadow-red-950/50 border border-red-500/30">
                     <i class="fa-brands fa-discord text-lg"></i>
                     <span>Login with Discord</span>
                 </a>
@@ -84,11 +100,15 @@
 
     <!-- Hero -->
     <header class="relative overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-96 h-96 bg-red-900/20 blur-[120px] rounded-full pointer-events-none"></div>
-        <div class="absolute top-20 right-0 w-72 h-72 bg-emerald-900/10 blur-[100px] rounded-full pointer-events-none"></div>
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-96 h-96 bg-red-900/20 blur-[120px] rounded-full pointer-events-none">
+        </div>
+        <div class="absolute top-20 right-0 w-72 h-72 bg-emerald-900/10 blur-[100px] rounded-full pointer-events-none">
+        </div>
 
         <div class="max-w-5xl mx-auto px-6 pt-16 pb-10 text-center relative">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/60 border border-red-800/40 text-red-400 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/60 border border-red-800/40 text-red-400 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
                 <i class="fa-solid fa-scroll text-xs"></i>
                 <span>Command Codex</span>
             </div>
@@ -101,8 +121,10 @@
             </h1>
 
             <p class="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                The complete reference for all 11 Gladiator V commands, covering what each one does, exactly how to use it,
-                and which ones sync live with your <a href="/dashboard.html" class="text-emerald-400 hover:text-emerald-300 underline underline-offset-2">web dashboard</a>.
+                The complete reference for all 11 Gladiator V commands, covering what each one does, exactly how to use
+                it,
+                and which ones sync live with your <a href="/dashboard.html"
+                    class="text-emerald-400 hover:text-emerald-300 underline underline-offset-2">web dashboard</a>.
             </p>
         </div>
     </header>
@@ -110,17 +132,28 @@
     <!-- Mobile TOC: horizontal pill scroller -->
     <div class="md:hidden sticky top-[73px] z-40 bg-obsidian/95 backdrop-blur-md border-b border-gray-900 py-3">
         <div class="flex gap-2 overflow-x-auto px-6 no-scrollbar" style="scrollbar-width:none;-ms-overflow-style:none;">
-            <a href="#schedule" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/schedule</a>
-            <a href="#startworkout" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/startworkout</a>
-            <a href="#myworkout" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/myworkout</a>
-            <a href="#resetworkout" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/resetworkout</a>
-            <a href="#remindworkout" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/remindworkout</a>
-            <a href="#myreminders" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/myreminders</a>
-            <a href="#levels" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/levels</a>
-            <a href="#flex" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/flex</a>
-            <a href="#diet" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/diet</a>
-            <a href="#hype" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/hype</a>
-            <a href="#help" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/help</a>
+            <a href="#schedule"
+                class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/schedule</a>
+            <a href="#startworkout"
+                class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/startworkout</a>
+            <a href="#myworkout"
+                class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/myworkout</a>
+            <a href="#resetworkout"
+                class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/resetworkout</a>
+            <a href="#remindworkout"
+                class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/remindworkout</a>
+            <a href="#myreminders"
+                class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/myreminders</a>
+            <a href="#levels"
+                class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/levels</a>
+            <a href="#flex"
+                class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/flex</a>
+            <a href="#diet"
+                class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/diet</a>
+            <a href="#hype"
+                class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/hype</a>
+            <a href="#help"
+                class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/help</a>
         </div>
     </div>
 
@@ -132,180 +165,267 @@
             <div class="sticky top-28">
                 <div class="text-xs uppercase tracking-widest font-bold text-gray-500 mb-3 pl-4">On this page</div>
                 <nav class="flex flex-col gap-0.5 border-l border-gray-800">
-                    <a data-toc href="#schedule" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/schedule</a>
-                    <a data-toc href="#startworkout" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/startworkout</a>
-                    <a data-toc href="#myworkout" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/myworkout</a>
-                    <a data-toc href="#resetworkout" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/resetworkout</a>
-                    <a data-toc href="#remindworkout" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/remindworkout</a>
-                    <a data-toc href="#myreminders" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/myreminders</a>
-                    <a data-toc href="#levels" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/levels</a>
-                    <a data-toc href="#flex" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/flex</a>
-                    <a data-toc href="#diet" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/diet</a>
-                    <a data-toc href="#hype" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/hype</a>
-                    <a data-toc href="#help" class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/help</a>
+                    <a data-toc href="#schedule"
+                        class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/schedule</a>
+                    <a data-toc href="#startworkout"
+                        class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/startworkout</a>
+                    <a data-toc href="#myworkout"
+                        class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/myworkout</a>
+                    <a data-toc href="#resetworkout"
+                        class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/resetworkout</a>
+                    <a data-toc href="#remindworkout"
+                        class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/remindworkout</a>
+                    <a data-toc href="#myreminders"
+                        class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/myreminders</a>
+                    <a data-toc href="#levels"
+                        class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/levels</a>
+                    <a data-toc href="#flex"
+                        class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/flex</a>
+                    <a data-toc href="#diet"
+                        class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/diet</a>
+                    <a data-toc href="#hype"
+                        class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/hype</a>
+                    <a data-toc href="#help"
+                        class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/help</a>
                 </nav>
             </div>
         </aside>
 
         <!-- Command spine -->
         <div class="relative">
-            <div class="hidden md:block absolute left-[27px] top-3 bottom-3 w-px bg-gradient-to-b from-red-700/70 via-red-900/40 to-emerald-700/50"></div>
+            <div
+                class="hidden md:block absolute left-[27px] top-3 bottom-3 w-px bg-gradient-to-b from-red-700/70 via-red-900/40 to-emerald-700/50">
+            </div>
 
             <div class="space-y-8 md:space-y-10">
 
                 <!-- 1. /schedule -->
                 <section id="schedule" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">01</div>
-                    <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
+                    <div
+                        class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
+                        01</div>
+                    <div
+                        class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
                                 <i class="fa-solid fa-scroll text-red-500 text-sm"></i>/schedule
                             </span>
-                            <span class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only visible to you</span>
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only
+                                visible to you</span>
                         </div>
-                        <h2 class="font-display text-white font-bold text-xl mb-2">Preview the whole week before you commit</h2>
+                        <h2 class="font-display text-white font-bold text-xl mb-2">Preview the whole week before you
+                            commit</h2>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            Shows your complete 7-day training split for your current rank, listing every exercise and every set/rep count,
-                            Monday through Sunday, including rest days. Nothing here is logged; it's purely a preview so you know
+                            Shows your complete 7-day training split for your current rank, listing every exercise and
+                            every set/rep count,
+                            Monday through Sunday, including rest days. Nothing here is logged; it's purely a preview so
+                            you know
                             what's coming before you start a session.
                         </p>
                         <ol class="text-sm text-gray-400 space-y-1.5 list-decimal list-inside">
                             <li>Run <code class="font-mono text-emerald-400">/schedule</code></li>
-                            <li>Choose <strong class="text-gray-200">Gym 🏋️</strong> or <strong class="text-gray-200">Calisthenics 🤸</strong></li>
+                            <li>Choose <strong class="text-gray-200">Gym 🏋️</strong> or <strong
+                                    class="text-gray-200">Calisthenics 🤸</strong></li>
                             <li>Page through the week with <strong class="text-gray-200">⬅️ ➡️</strong></li>
                         </ol>
-                        <p class="text-gray-500 text-xs mt-4 italic">Difficulty and volume scale automatically as your rank climbs.</p>
+                        <p class="text-gray-500 text-xs mt-4 italic">Difficulty and volume scale automatically as your
+                            rank climbs.</p>
                     </div>
                 </section>
 
                 <!-- 2. /startworkout -->
                 <section id="startworkout" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">02</div>
-                    <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
+                    <div
+                        class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
+                        02</div>
+                    <div
+                        class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
                                 <i class="fa-solid fa-bolt text-red-500 text-sm"></i>/startworkout
                             </span>
-                            <span class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only visible to you</span>
-                            <span class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-bold uppercase tracking-wide">Logs progress</span>
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only
+                                visible to you</span>
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-bold uppercase tracking-wide">Logs
+                                progress</span>
                         </div>
                         <h2 class="font-display text-white font-bold text-xl mb-2">Today's session, ready to log</h2>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            Unlike <code class="font-mono text-gray-300">/schedule</code>, this pulls up <strong class="text-gray-200">only today's</strong>
-                            workout based on the actual day of the week and your current rank, and gives you a button to log it the
-                            moment you finish. This is the command that actually moves your Total Workouts count and rank forward.
+                            Unlike <code class="font-mono text-gray-300">/schedule</code>, this pulls up <strong
+                                class="text-gray-200">only today's</strong>
+                            workout based on the actual day of the week and your current rank, and gives you a button to
+                            log it the
+                            moment you finish. This is the command that actually moves your Total Workouts count and
+                            rank forward.
                         </p>
                         <ol class="text-sm text-gray-400 space-y-1.5 list-decimal list-inside">
                             <li>Run <code class="font-mono text-emerald-400">/startworkout</code></li>
-                            <li>Choose <strong class="text-gray-200">Gym</strong> or <strong class="text-gray-200">Calisthenics</strong>. Rest days show a recovery message instead</li>
-                            <li>Finish the exercises, then tap <strong class="text-emerald-400">✅ Complete Workout</strong></li>
+                            <li>Choose <strong class="text-gray-200">Gym</strong> or <strong
+                                    class="text-gray-200">Calisthenics</strong>. Rest days show a recovery message
+                                instead</li>
+                            <li>Finish the exercises, then tap <strong class="text-emerald-400">✅ Complete
+                                    Workout</strong></li>
                         </ol>
-                        <p class="text-gray-500 text-xs mt-4 italic">Reach a new milestone and you'll get a level-up announcement on the spot.</p>
+                        <p class="text-gray-500 text-xs mt-4 italic">Reach a new milestone and you'll get a level-up
+                            announcement on the spot.</p>
                     </div>
                 </section>
 
                 <!-- 3. /myworkout -->
                 <section id="myworkout" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">03</div>
-                    <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
+                    <div
+                        class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
+                        03</div>
+                    <div
+                        class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
                                 <i class="fa-solid fa-shield-halved text-red-500 text-sm"></i>/myworkout
                             </span>
-                            <span class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only visible to you</span>
-                            <span class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-bold uppercase tracking-wide">
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only
+                                visible to you</span>
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-bold uppercase tracking-wide">
                                 <i class="fa-solid fa-arrows-rotate text-[10px] mr-1"></i>Synced with dashboard
                             </span>
                         </div>
-                        <h2 class="font-display text-white font-bold text-xl mb-2">Build your own split from scratch</h2>
+                        <h2 class="font-display text-white font-bold text-xl mb-2">Build your own split from scratch
+                        </h2>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            Opens your private <strong class="text-gray-200">Armory</strong>, separate from the built-in Gym/Calisthenics
-                            routines, this is where you create fully custom weekly schedules with your own exercises and set/rep
+                            Opens your private <strong class="text-gray-200">Armory</strong>, separate from the built-in
+                            Gym/Calisthenics
+                            routines, this is where you create fully custom weekly schedules with your own exercises and
+                            set/rep
                             counts for each day.
                         </p>
                         <ol class="text-sm text-gray-400 space-y-1.5 list-decimal list-inside">
                             <li>Run <code class="font-mono text-emerald-400">/myworkout</code></li>
-                            <li><strong class="text-gray-200">New Schedule</strong> to name a routine (e.g. "Push Pull Legs")</li>
-                            <li>Pick a day from the dropdown, then <strong class="text-gray-200">Add Exercise</strong> to log a movement + sets/reps</li>
+                            <li><strong class="text-gray-200">New Schedule</strong> to name a routine (e.g. "Push Pull
+                                Legs")</li>
+                            <li>Pick a day from the dropdown, then <strong class="text-gray-200">Add Exercise</strong>
+                                to log a movement + sets/reps</li>
                             <li>Switch between saved schedules anytime with the schedule dropdown</li>
-                            <li><strong class="text-red-400">Clear All</strong> wipes everything if you want a clean slate</li>
+                            <li><strong class="text-red-400">Clear All</strong> wipes everything if you want a clean
+                                slate</li>
                         </ol>
-                        <p class="text-gray-500 text-xs mt-4 italic">Everything you build here appears instantly on the web dashboard, and vice versa.</p>
+                        <p class="text-gray-500 text-xs mt-4 italic">Everything you build here appears instantly on the
+                            web dashboard, and vice versa.</p>
                     </div>
                 </section>
 
                 <!-- 4. /resetworkout -->
                 <section id="resetworkout" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">04</div>
-                    <div class="flex-1 bg-cardBg border border-red-900/40 rounded-3xl p-6 hover:border-red-700/60 transition">
+                    <div
+                        class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
+                        04</div>
+                    <div
+                        class="flex-1 bg-cardBg border border-red-900/40 rounded-3xl p-6 hover:border-red-700/60 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
                                 <i class="fa-solid fa-rotate-left text-red-500 text-sm"></i>/resetworkout
                             </span>
-                            <span class="px-2.5 py-1 rounded-full bg-red-950/60 border border-red-800/40 text-red-400 text-xs font-bold uppercase tracking-wide">
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-red-950/60 border border-red-800/40 text-red-400 text-xs font-bold uppercase tracking-wide">
                                 <i class="fa-solid fa-triangle-exclamation text-[10px] mr-1"></i>Destructive
                             </span>
-                            <span class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-bold uppercase tracking-wide">
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-bold uppercase tracking-wide">
                                 <i class="fa-solid fa-arrows-rotate text-[10px] mr-1"></i>Synced with dashboard
                             </span>
                         </div>
-                        <h2 class="font-display text-white font-bold text-xl mb-2">A clean slate, if you really want one</h2>
+                        <h2 class="font-display text-white font-bold text-xl mb-2">A clean slate, if you really want one
+                        </h2>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
                             Wipes your Total Workouts count and drops your rank all the way back to
-                            <strong class="text-gray-200">Level 1: Novice / Beginner</strong>. Useful if you're starting a fresh
+                            <strong class="text-gray-200">Level 1: Novice / Beginner</strong>. Useful if you're starting
+                            a fresh
                             training cycle and want your progress to reflect it honestly.
                         </p>
                         <ol class="text-sm text-gray-400 space-y-1.5 list-decimal list-inside">
                             <li>Run <code class="font-mono text-emerald-400">/resetworkout</code></li>
                             <li>Read the warning carefully</li>
-                            <li>Confirm with <strong class="text-red-400">Yes, Reset My Progress</strong>, or back out with <strong class="text-gray-300">Cancel</strong></li>
+                            <li>Confirm with <strong class="text-red-400">Yes, Reset My Progress</strong>, or back out
+                                with <strong class="text-gray-300">Cancel</strong></li>
                         </ol>
-                        <p class="text-red-400/90 text-xs mt-4 font-bold">⚠️ This cannot be undone, and it resets your count on the dashboard too.</p>
+                        <p class="text-red-400/90 text-xs mt-4 font-bold">⚠️ This cannot be undone, and it resets your
+                            count on the dashboard too.</p>
                     </div>
                 </section>
 
                 <!-- 5. /remindworkout -->
                 <section id="remindworkout" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">05</div>
-                    <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
+                    <div
+                        class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
+                        05</div>
+                    <div
+                        class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
                                 <i class="fa-solid fa-bell text-red-500 text-sm"></i>/remindworkout
                             </span>
-                            <span class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only visible to you</span>
-                            <span class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-bold uppercase tracking-wide">
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only
+                                visible to you</span>
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-bold uppercase tracking-wide">
                                 <i class="fa-solid fa-arrows-rotate text-[10px] mr-1"></i>Synced with dashboard
                             </span>
                         </div>
                         <h2 class="font-display text-white font-bold text-xl mb-2">Never let the arena forget you</h2>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            Sets a daily ping 5 minutes before your chosen workout time, in your own timezone, sent to a channel
-                            of your choice. You can set one reminder per server, in as many different servers as you like,
-                            each with its own time, timezone, channel, and days. Running this again in a server where you
+                            Sets a daily ping 5 minutes before your chosen workout time, in your own timezone, sent to a
+                            channel
+                            of your choice. You can set one reminder per server, in as many different servers as you
+                            like,
+                            each with its own time, timezone, channel, and days. Running this again in a server where
+                            you
                             already have a reminder set offers <strong class="text-gray-200">Update</strong> or
-                            <strong class="text-gray-200">Delete</strong> for that server, instead of stacking a second one,
+                            <strong class="text-gray-200">Delete</strong> for that server, instead of stacking a second
+                            one,
                             this keeps things from being used to spam a channel with duplicate pings.
                         </p>
                         <div class="text-sm text-gray-400 space-y-2 mb-4">
-                            <p><code class="font-mono text-emerald-400">/remindworkout time:</code> e.g. <span class="text-gray-300">6:00 AM</span></p>
-                            <p><code class="font-mono text-emerald-400">timezone:</code> optional, defaults to GMT (UTC+0)</p>
-                            <p><code class="font-mono text-emerald-400">channel:</code> optional, defaults to the channel you ran the command in</p>
-                            <p><code class="font-mono text-emerald-400">days:</code> optional, e.g. <span class="text-gray-300">Mon, Wed, Fri</span>. Defaults to Monday, Tuesday, Thursday, Friday, Saturday</p>
+                            <p><code class="font-mono text-emerald-400">/remindworkout time:</code> e.g. <span
+                                    class="text-gray-300">6:00 AM</span></p>
+                            <p><code class="font-mono text-emerald-400">timezone:</code> optional, defaults to GMT
+                                (UTC+0)</p>
+                            <p><code class="font-mono text-emerald-400">channel:</code> optional, defaults to the
+                                channel you ran the command in</p>
+                            <p><code class="font-mono text-emerald-400">days:</code> optional, e.g. <span
+                                    class="text-gray-300">Mon, Wed, Fri</span>. Defaults to Monday, Tuesday, Thursday,
+                                Friday, Saturday</p>
                         </div>
-                        <p class="text-gray-500 text-xs italic">The reminder ping itself includes Delete Reminder and How to Update Time buttons, plus a moderator-only delete option for server staff.</p>
+                        <p class="text-gray-500 text-xs italic">The reminder ping itself includes Delete Reminder and
+                            How to Update Time buttons, plus a moderator-only delete option for server staff.</p>
                     </div>
                 </section>
 
                 <!-- 6. /myreminders -->
                 <section id="myreminders" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">06</div>
-                    <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
+                    <div
+                        class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
+                        06</div>
+                    <div
+                        class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
                                 <i class="fa-solid fa-list-check text-red-500 text-sm"></i>/myreminders
                             </span>
-                            <span class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only visible to you</span>
-                            <span class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-bold uppercase tracking-wide">
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only
+                                visible to you</span>
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-bold uppercase tracking-wide">
                                 <i class="fa-solid fa-arrows-rotate text-[10px] mr-1"></i>Synced with dashboard
                             </span>
                         </div>
@@ -313,7 +433,8 @@
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
                             Lists every workout reminder you've set across every server, with the time, timezone, days,
                             and channel for each. Since you can only manage a server's reminder from inside that server
-                            with <code class="font-mono text-gray-300">/remindworkout</code>, this command is the one place
+                            with <code class="font-mono text-gray-300">/remindworkout</code>, this command is the one
+                            place
                             to see and remove all of them at once, no matter which server you're currently in.
                         </p>
                         <ol class="text-sm text-gray-400 space-y-1.5 list-decimal list-inside">
@@ -321,104 +442,170 @@
                             <li>Pick a reminder from the dropdown to remove it</li>
                             <li>Confirm the removal</li>
                         </ol>
-                        <p class="text-gray-500 text-xs mt-4 italic">The same list is also visible on your web dashboard, where you can remove reminders too, adding a new one is Discord-only.</p>
+                        <p class="text-gray-500 text-xs mt-4 italic">The same list is also visible on your web
+                            dashboard, where you can remove reminders too, adding a new one is Discord-only.</p>
                     </div>
                 </section>
 
                 <!-- 7. /levels -->
                 <section id="levels" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">07</div>
-                    <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
+                    <div
+                        class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
+                        07</div>
+                    <div
+                        class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
                                 <i class="fa-solid fa-ranking-star text-red-500 text-sm"></i>/levels
                             </span>
-                            <span class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only visible to you</span>
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only
+                                visible to you</span>
                         </div>
                         <h2 class="font-display text-white font-bold text-xl mb-2">The Path of Ascendance</h2>
                         <p class="text-gray-400 text-sm leading-relaxed mb-5">
-                            Displays the full 10-rank progression system, showing how many logged workouts (via <code class="font-mono text-gray-300">/startworkout</code>)
+                            Displays the full 10-rank progression system, showing how many logged workouts (via <code
+                                class="font-mono text-gray-300">/startworkout</code>)
                             it takes to reach each stage, roughly mapped to a month of consistent training.
                         </p>
 
                         <div class="relative pl-6 border-l border-amber-700/40 space-y-3">
-                            <div class="flex items-baseline gap-3 text-sm"><span class="font-display text-amber-500 font-bold w-6">1</span><span class="text-gray-200 font-bold">Novice / Beginner</span><span class="text-gray-500 text-xs ml-auto">30 workouts</span></div>
-                            <div class="flex items-baseline gap-3 text-sm"><span class="font-display text-amber-500 font-bold w-6">2</span><span class="text-gray-200 font-bold">Bronze Legionnaire</span><span class="text-gray-500 text-xs ml-auto">60 workouts</span></div>
-                            <div class="flex items-baseline gap-3 text-sm"><span class="font-display text-amber-500 font-bold w-6">3</span><span class="text-gray-200 font-bold">Iron Vanguard</span><span class="text-gray-500 text-xs ml-auto">120 workouts</span></div>
-                            <div class="flex items-baseline gap-3 text-sm"><span class="font-display text-amber-500 font-bold w-6">4</span><span class="text-gray-200 font-bold">Steel Centurion</span><span class="text-gray-500 text-xs ml-auto">150 workouts</span></div>
-                            <div class="flex items-baseline gap-3 text-sm"><span class="font-display text-amber-500 font-bold w-6">5</span><span class="text-gray-200 font-bold">Gilded Champion</span><span class="text-gray-500 text-xs ml-auto">240 workouts</span></div>
-                            <div class="flex items-baseline gap-3 text-sm"><span class="font-display text-amber-500 font-bold w-6">6</span><span class="text-gray-200 font-bold">Arena Master</span><span class="text-gray-500 text-xs ml-auto">330 workouts</span></div>
-                            <div class="flex items-baseline gap-3 text-sm"><span class="font-display text-amber-500 font-bold w-6">7</span><span class="text-gray-200 font-bold">Gold Gladiator</span><span class="text-gray-500 text-xs ml-auto">390 workouts</span></div>
-                            <div class="flex items-baseline gap-3 text-sm"><span class="font-display text-amber-500 font-bold w-6">8</span><span class="text-gray-200 font-bold">Apex Centurion</span><span class="text-gray-500 text-xs ml-auto">600 workouts</span></div>
-                            <div class="flex items-baseline gap-3 text-sm"><span class="font-display text-amber-500 font-bold w-6">9</span><span class="text-gray-200 font-bold">Titan Ascendant</span><span class="text-gray-500 text-xs ml-auto">810 workouts</span></div>
-                            <div class="flex items-baseline gap-3 text-sm"><span class="font-display text-amber-500 font-bold w-6">10</span><span class="text-white font-black">Gladiator Maximus</span><span class="text-gray-500 text-xs ml-auto">1000+ workouts</span></div>
+                            <div class="flex items-baseline gap-3 text-sm"><span
+                                    class="font-display text-amber-500 font-bold w-6">1</span><span
+                                    class="text-gray-200 font-bold">Novice / Beginner</span><span
+                                    class="text-gray-500 text-xs ml-auto">30 workouts</span></div>
+                            <div class="flex items-baseline gap-3 text-sm"><span
+                                    class="font-display text-amber-500 font-bold w-6">2</span><span
+                                    class="text-gray-200 font-bold">Bronze Legionnaire</span><span
+                                    class="text-gray-500 text-xs ml-auto">60 workouts</span></div>
+                            <div class="flex items-baseline gap-3 text-sm"><span
+                                    class="font-display text-amber-500 font-bold w-6">3</span><span
+                                    class="text-gray-200 font-bold">Iron Vanguard</span><span
+                                    class="text-gray-500 text-xs ml-auto">120 workouts</span></div>
+                            <div class="flex items-baseline gap-3 text-sm"><span
+                                    class="font-display text-amber-500 font-bold w-6">4</span><span
+                                    class="text-gray-200 font-bold">Steel Centurion</span><span
+                                    class="text-gray-500 text-xs ml-auto">150 workouts</span></div>
+                            <div class="flex items-baseline gap-3 text-sm"><span
+                                    class="font-display text-amber-500 font-bold w-6">5</span><span
+                                    class="text-gray-200 font-bold">Gilded Champion</span><span
+                                    class="text-gray-500 text-xs ml-auto">240 workouts</span></div>
+                            <div class="flex items-baseline gap-3 text-sm"><span
+                                    class="font-display text-amber-500 font-bold w-6">6</span><span
+                                    class="text-gray-200 font-bold">Arena Master</span><span
+                                    class="text-gray-500 text-xs ml-auto">330 workouts</span></div>
+                            <div class="flex items-baseline gap-3 text-sm"><span
+                                    class="font-display text-amber-500 font-bold w-6">7</span><span
+                                    class="text-gray-200 font-bold">Gold Gladiator</span><span
+                                    class="text-gray-500 text-xs ml-auto">390 workouts</span></div>
+                            <div class="flex items-baseline gap-3 text-sm"><span
+                                    class="font-display text-amber-500 font-bold w-6">8</span><span
+                                    class="text-gray-200 font-bold">Apex Centurion</span><span
+                                    class="text-gray-500 text-xs ml-auto">600 workouts</span></div>
+                            <div class="flex items-baseline gap-3 text-sm"><span
+                                    class="font-display text-amber-500 font-bold w-6">9</span><span
+                                    class="text-gray-200 font-bold">Titan Ascendant</span><span
+                                    class="text-gray-500 text-xs ml-auto">810 workouts</span></div>
+                            <div class="flex items-baseline gap-3 text-sm"><span
+                                    class="font-display text-amber-500 font-bold w-6">10</span><span
+                                    class="text-white font-black">Gladiator Maximus</span><span
+                                    class="text-gray-500 text-xs ml-auto">1000+ workouts</span></div>
                         </div>
                     </div>
                 </section>
 
                 <!-- 8. /flex -->
                 <section id="flex" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">08</div>
-                    <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
+                    <div
+                        class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
+                        08</div>
+                    <div
+                        class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
                                 <i class="fa-solid fa-trophy text-red-500 text-sm"></i>/flex
                             </span>
-                            <span class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-bold uppercase tracking-wide">
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-bold uppercase tracking-wide">
                                 <i class="fa-solid fa-arrows-rotate text-[10px] mr-1"></i>Synced with dashboard
                             </span>
                         </div>
-                        <h2 class="font-display text-white font-bold text-xl mb-2">Your personal-record hall of fame</h2>
+                        <h2 class="font-display text-white font-bold text-xl mb-2">Your personal-record hall of fame
+                        </h2>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            A paginated log of specific stats and PRs you record by hand, think "Planche hold: 15 seconds",
+                            A paginated log of specific stats and PRs you record by hand, think "Planche hold: 15
+                            seconds",
                             separate from your overall workout count. This is your PR journal, not a workout tracker.
                         </p>
                         <ol class="text-sm text-gray-400 space-y-1.5 list-decimal list-inside">
                             <li>Run <code class="font-mono text-emerald-400">/flex</code></li>
-                            <li><strong class="text-gray-200">Add</strong> to log a new exercise/skill + result. Logging the same exercise again automatically archives the old entry</li>
-                            <li><strong class="text-gray-200">Delete</strong> a specific numbered entry, or type "all" to clear everything</li>
-                            <li><strong class="text-gray-200">Menu</strong> / <strong class="text-gray-200">Archived</strong> to flip between active and retired entries</li>
-                            <li><strong class="text-gray-200">📈 Graph</strong> to pick an exercise and chart your progress over time</li>
+                            <li><strong class="text-gray-200">Add</strong> to log a new exercise/skill + result. Logging
+                                the same exercise again automatically archives the old entry</li>
+                            <li><strong class="text-gray-200">Delete</strong> a specific numbered entry, or type "all"
+                                to clear everything</li>
+                            <li><strong class="text-gray-200">Menu</strong> / <strong
+                                    class="text-gray-200">Archived</strong> to flip between active and retired entries
+                            </li>
+                            <li><strong class="text-gray-200">📈 Graph</strong> to pick an exercise and chart your
+                                progress over time</li>
                         </ol>
                     </div>
                 </section>
 
                 <!-- 9. /diet -->
                 <section id="diet" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">09</div>
-                    <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
+                    <div
+                        class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
+                        09</div>
+                    <div
+                        class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
                                 <i class="fa-solid fa-utensils text-red-500 text-sm"></i>/diet
                             </span>
-                            <span class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only visible to you</span>
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only
+                                visible to you</span>
                         </div>
                         <h2 class="font-display text-white font-bold text-xl mb-2">Fuel matches effort</h2>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            A browsable reference of common protein sources, sortable by protein content or calorie count,
+                            A browsable reference of common protein sources, sortable by protein content or calorie
+                            count,
                             with values shown per 100g so you can plan meals around your training.
                         </p>
                         <ol class="text-sm text-gray-400 space-y-1.5 list-decimal list-inside">
                             <li>Run <code class="font-mono text-emerald-400">/diet</code></li>
-                            <li>Choose <strong class="text-gray-200">Sort by Protein 🥩</strong> or <strong class="text-gray-200">Sort by Calories 🥗</strong></li>
-                            <li>Page through the ranked list with <strong class="text-gray-200">Back / Next</strong></li>
+                            <li>Choose <strong class="text-gray-200">Sort by Protein 🥩</strong> or <strong
+                                    class="text-gray-200">Sort by Calories 🥗</strong></li>
+                            <li>Page through the ranked list with <strong class="text-gray-200">Back / Next</strong>
+                            </li>
                         </ol>
                     </div>
                 </section>
 
                 <!-- 10. /hype -->
                 <section id="hype" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">10</div>
-                    <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
+                    <div
+                        class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
+                        10</div>
+                    <div
+                        class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
                                 <i class="fa-solid fa-music text-red-500 text-sm"></i>/hype
                             </span>
-                            <span class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Public in channel</span>
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Public
+                                in channel</span>
                         </div>
                         <h2 class="font-display text-white font-bold text-xl mb-2">No excuses. Let's get to work.</h2>
                         <p class="text-gray-400 text-sm leading-relaxed">
-                            Drops a direct link to the official Gladiator V YouTube Music training playlist, just one command, no menus,
+                            Drops a direct link to the official Gladiator V YouTube Music training playlist, just one
+                            command, no menus,
                             just something to get locked in before a session.
                         </p>
                     </div>
@@ -426,18 +613,26 @@
 
                 <!-- 11. /help -->
                 <section id="help" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
-                    <div class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-emerald-600 to-emerald-800 text-white font-display font-bold text-lg border border-emerald-400/30">11</div>
-                    <div class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-emerald-900/50 transition">
+                    <div
+                        class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-emerald-600 to-emerald-800 text-white font-display font-bold text-lg border border-emerald-400/30">
+                        11</div>
+                    <div
+                        class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-emerald-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
                                 <i class="fa-solid fa-circle-question text-emerald-400 text-sm"></i>/help
                             </span>
-                            <span class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Public in channel</span>
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Public
+                                in channel</span>
                         </div>
                         <h2 class="font-display text-white font-bold text-xl mb-2">Lost in the arena? Start here.</h2>
                         <p class="text-gray-400 text-sm leading-relaxed">
-                            An in-Discord quick-reference covering every command above, plus direct links to the web dashboard,
-                            the Top.gg listing, and the support server. Think of this codex page as the deep-dive version of
+                            An in-Discord quick-reference covering every command above, plus direct links to the web
+                            dashboard,
+                            the Top.gg listing, and the support server. Think of this codex page as the deep-dive
+                            version of
                             the same thing.
                         </p>
                     </div>
@@ -451,15 +646,20 @@
     <section class="border-t border-gray-900 bg-[#08080a] py-16">
         <div class="max-w-3xl mx-auto px-6 text-center">
             <h2 class="font-display text-2xl md:text-3xl font-black text-white mb-4">Ready to enter the arena?</h2>
-            <p class="text-gray-400 text-sm mb-8">Add the bot, open your dashboard, or come say hi in the support server.</p>
+            <p class="text-gray-400 text-sm mb-8">Add the bot, open your dashboard, or come say hi in the support
+                server.</p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://discord.com/api/oauth2/authorize?client_id=1016363661444534452&permissions=8&scope=bot%20applications.commands" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl font-bold text-sm text-white bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 transition shadow-lg shadow-red-950/50 border border-red-500/30">
+                <a href="https://discord.com/api/oauth2/authorize?client_id=1016363661444534452&permissions=8&scope=bot%20applications.commands"
+                    target="_blank" rel="noopener noreferrer"
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl font-bold text-sm text-white bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 transition shadow-lg shadow-red-950/50 border border-red-500/30">
                     <i class="fa-solid fa-user-plus"></i><span>Add to Discord</span>
                 </a>
-                <a href="/dashboard.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl font-bold text-sm text-white bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 transition shadow-lg shadow-emerald-950/50 border border-emerald-400/30">
+                <a href="/dashboard.html"
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl font-bold text-sm text-white bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 transition shadow-lg shadow-emerald-950/50 border border-emerald-400/30">
                     <i class="fa-solid fa-dumbbell"></i><span>Open Dashboard</span>
                 </a>
-                <a href="https://discord.gg/X44wTsRdx" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-bold text-sm text-gray-300 bg-cardBg hover:bg-cardHover border border-gray-800 transition">
+                <a href="https://discord.gg/X44wTsRdx" target="_blank" rel="noopener noreferrer"
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-bold text-sm text-gray-300 bg-cardBg hover:bg-cardHover border border-gray-800 transition">
                     <i class="fa-brands fa-discord text-emerald-400"></i><span>Join Discord</span>
                 </a>
             </div>
@@ -468,7 +668,8 @@
 
     <!-- Footer -->
     <footer class="border-t border-gray-900 bg-[#08080a] py-6">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+        <div
+            class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
             <p>© Gladiator V. All rights reserved.</p>
             <div class="flex gap-6">
                 <a href="/privacy.html" class="hover:text-gray-300 transition">Privacy Policy</a>
@@ -478,29 +679,30 @@
     </footer>
 
     <script>
-        // Scrollspy: highlight the active section's link in the desktop sidebar TOC
-        (function () {
-            var links = Array.prototype.slice.call(document.querySelectorAll('[data-toc]'));
-            var sections = links
-                .map(function (link) { return document.querySelector(link.getAttribute('href')); })
-                .filter(Boolean);
+            // Scrollspy: highlight the active section's link in the desktop sidebar TOC
+            (function () {
+                var links = Array.prototype.slice.call(document.querySelectorAll('[data-toc]'));
+                var sections = links
+                    .map(function (link) { return document.querySelector(link.getAttribute('href')); })
+                    .filter(Boolean);
 
-            if (!('IntersectionObserver' in window) || sections.length === 0) return;
+                if (!('IntersectionObserver' in window) || sections.length === 0) return;
 
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    var link = document.querySelector('[data-toc][href="#' + entry.target.id + '"]');
-                    if (!link) return;
-                    if (entry.isIntersecting) {
-                        links.forEach(function (l) { l.classList.remove('active'); });
-                        link.classList.add('active');
-                    }
-                });
-            }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        var link = document.querySelector('[data-toc][href="#' + entry.target.id + '"]');
+                        if (!link) return;
+                        if (entry.isIntersecting) {
+                            links.forEach(function (l) { l.classList.remove('active'); });
+                            link.classList.add('active');
+                        }
+                    });
+                }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
 
-            sections.forEach(function (section) { observer.observe(section); });
-        })();
+                sections.forEach(function (section) { observer.observe(section); });
+            })();
     </script>
 
 </body>
+
 </html>

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gladiator V | Conquer Your Workouts</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/radon_pfp.png">
-    
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -25,32 +26,38 @@
             }
         }
     </script>
-    
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Custom CSS File -->
     <link rel="stylesheet" href="/public/css/style.css">
 </head>
-<body class="bg-obsidian text-gray-100 font-sans min-h-screen flex flex-col justify-between selection:bg-red-900 selection:text-white">
+
+<body
+    class="bg-obsidian text-gray-100 font-sans min-h-screen flex flex-col justify-between selection:bg-red-900 selection:text-white">
 
     <!-- Navigation Bar -->
     <nav class="border-b border-red-900/30 bg-[#0d0d10]/80 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="/radon_pfp.png" alt="Radon Logo" class="w-10 h-10 rounded-xl border border-red-500/40 object-cover shadow-[0_0_15px_rgba(220,38,38,0.3)]">
-                <div class="text-2xl font-black tracking-wider uppercase bg-gradient-to-r from-red-500 via-rose-400 to-red-600 bg-clip-text text-transparent">
+                <img src="/radon_pfp.png" alt="Radon Logo"
+                    class="w-10 h-10 rounded-xl border border-red-500/40 object-cover shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+                <div
+                    class="text-2xl font-black tracking-wider uppercase bg-gradient-to-r from-red-500 via-rose-400 to-red-600 bg-clip-text text-transparent">
                     Gladiator <span class="text-emerald-400">V</span>
                 </div>
             </div>
 
             <!-- Docs + Login -->
             <div class="flex items-center gap-3">
-                <a href="/docs.html" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-gray-300 hover:text-white transition">
+                <a href="/docs.html"
+                    class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-gray-300 hover:text-white transition">
                     <i class="fa-solid fa-scroll text-xs"></i>
                     <span>Docs</span>
                 </a>
-                <a href="/auth/discord" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 transition shadow-lg shadow-red-950/50 border border-red-500/30">
+                <a href="/auth/discord"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 transition shadow-lg shadow-red-950/50 border border-red-500/30">
                     <i class="fa-brands fa-discord text-lg"></i>
                     <span>Login with Discord</span>
                 </a>
@@ -59,39 +66,50 @@
     </nav>
 
     <!-- Hero Section -->
-    <main class="flex-1 max-w-7xl mx-auto px-6 py-16 flex flex-col justify-center items-center text-center relative overflow-hidden">
+    <main
+        class="flex-1 max-w-7xl mx-auto px-6 py-16 flex flex-col justify-center items-center text-center relative overflow-hidden">
         <!-- Background Ambient Glows -->
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-red-900/20 blur-[120px] rounded-full pointer-events-none"></div>
-        <div class="absolute bottom-10 right-10 w-72 h-72 bg-emerald-900/10 blur-[100px] rounded-full pointer-events-none"></div>
+        <div
+            class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-red-900/20 blur-[120px] rounded-full pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-10 right-10 w-72 h-72 bg-emerald-900/10 blur-[100px] rounded-full pointer-events-none">
+        </div>
 
         <!-- Rank & Sync Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/60 border border-red-800/40 text-red-400 text-xs font-bold uppercase tracking-widest mb-8 shadow-sm">
+        <div
+            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/60 border border-red-800/40 text-red-400 text-xs font-bold uppercase tracking-widest mb-8 shadow-sm">
             <i class="fa-solid fa-bolt text-xs"></i>
             <span>Synced Live with Discord Bot</span>
         </div>
 
         <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-6 max-w-4xl leading-tight">
-            Conquer Your Workouts. <br/>
+            Conquer Your Workouts. <br />
             <span class="bg-gradient-to-r from-red-500 via-rose-400 to-emerald-400 bg-clip-text text-transparent">
                 Track Every Flex.
             </span>
         </h1>
 
         <p class="text-gray-400 text-base md:text-lg max-w-2xl mb-10 leading-relaxed">
-            Manage your custom training splits, track your workout flexes, and optimize your nutrition with live database integration for Gladiator V.
+            Manage your custom training splits, track your workout flexes, and optimize your nutrition with live
+            database integration for Gladiator V.
         </p>
 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-            <a href="/auth/discord" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-black text-base text-white bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 transition shadow-xl shadow-emerald-950/50 border border-emerald-400/30">
+            <a href="/auth/discord"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-black text-base text-white bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 transition shadow-xl shadow-emerald-950/50 border border-emerald-400/30">
                 <i class="fa-solid fa-dumbbell"></i>
                 <span>Open Dashboard</span>
             </a>
-            <a href="https://discord.com/api/oauth2/authorize?client_id=1016363661444534452&permissions=8&scope=bot%20applications.commands" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl font-bold text-base text-gray-300 bg-cardBg hover:bg-cardHover border border-gray-800 transition">
+            <a href="https://discord.com/oauth2/authorize?client_id=1016363661444534452&permissions=379968&integration_type=0&scope=bot+applications.commands"
+                target="_blank" rel="noopener noreferrer"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl font-bold text-base text-gray-300 bg-cardBg hover:bg-cardHover border border-gray-800 transition">
                 <i class="fa-solid fa-user-plus text-gray-400"></i>
                 <span>Add to discord</span>
             </a>
-            <a href="https://discord.gg/X44wTsRdx" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl font-bold text-base text-gray-300 bg-cardBg hover:bg-cardHover border border-gray-800 transition">
+            <a href="https://discord.gg/X44wTsRdx" target="_blank" rel="noopener noreferrer"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl font-bold text-base text-gray-300 bg-cardBg hover:bg-cardHover border border-gray-800 transition">
                 <i class="fa-brands fa-discord text-emerald-400"></i>
                 <span>Join discord</span>
             </a>
@@ -100,34 +118,41 @@
         <!-- Feature Highlights Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 w-full text-left">
             <div class="bg-cardBg border border-gray-800/80 p-6 rounded-3xl hover:border-red-900/50 transition">
-                <div class="w-12 h-12 bg-red-950/80 border border-red-600/30 rounded-2xl flex items-center justify-center mb-4 text-red-500 font-bold text-xl">
+                <div
+                    class="w-12 h-12 bg-red-950/80 border border-red-600/30 rounded-2xl flex items-center justify-center mb-4 text-red-500 font-bold text-xl">
                     <i class="fa-solid fa-trophy"></i>
                 </div>
                 <h3 class="text-white font-bold text-lg mb-2">Flex Counter</h3>
-                <p class="text-gray-400 text-sm">Dedicated column highlighting total workouts logged directly from Discord.</p>
+                <p class="text-gray-400 text-sm">Dedicated column highlighting total workouts logged directly from
+                    Discord.</p>
             </div>
 
             <div class="bg-cardBg border border-gray-800/80 p-6 rounded-3xl hover:border-emerald-900/50 transition">
-                <div class="w-12 h-12 bg-emerald-950/80 border border-emerald-600/30 rounded-2xl flex items-center justify-center mb-4 text-emerald-400 font-bold text-xl">
+                <div
+                    class="w-12 h-12 bg-emerald-950/80 border border-emerald-600/30 rounded-2xl flex items-center justify-center mb-4 text-emerald-400 font-bold text-xl">
                     <i class="fa-solid fa-calendar-days"></i>
                 </div>
                 <h3 class="text-white font-bold text-lg mb-2">Custom Routine Builder</h3>
-                <p class="text-gray-400 text-sm">Create, edit, and save your custom weekly plans synced with <code class="text-emerald-400 font-mono text-xs">/myworkout</code>.</p>
+                <p class="text-gray-400 text-sm">Create, edit, and save your custom weekly plans synced with <code
+                        class="text-emerald-400 font-mono text-xs">/myworkout</code>.</p>
             </div>
 
             <div class="bg-cardBg border border-gray-800/80 p-6 rounded-3xl hover:border-red-900/50 transition">
-                <div class="w-12 h-12 bg-red-950/80 border border-red-600/30 rounded-2xl flex items-center justify-center mb-4 text-red-500 font-bold text-xl">
+                <div
+                    class="w-12 h-12 bg-red-950/80 border border-red-600/30 rounded-2xl flex items-center justify-center mb-4 text-red-500 font-bold text-xl">
                     <i class="fa-solid fa-utensils"></i>
                 </div>
                 <h3 class="text-white font-bold text-lg mb-2">Smart Diet Planner</h3>
-                <p class="text-gray-400 text-sm">Filter and sort food items by highest protein or calories for peak performance.</p>
+                <p class="text-gray-400 text-sm">Filter and sort food items by highest protein or calories for peak
+                    performance.</p>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="border-t border-gray-900 bg-[#08080a] py-6">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+        <div
+            class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
             <p>© Gladiator V. All rights reserved.</p>
             <div class="flex gap-6">
                 <a href="/docs.html" class="hover:text-gray-300 transition">Docs</a>
@@ -138,4 +163,5 @@
     </footer>
 
 </body>
+
 </html>
