@@ -5,6 +5,7 @@ dns.setServers(['8.8.8.8', '1.1.1.1']);
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const { MongoClient, Long } = require('mongodb');
 const axios = require('axios');
 const path = require('path');
@@ -18,36 +19,50 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({
-    secret: process.env.SESSION_SECRET || 'gladiator_super_secret_key',
-    resave: false,
-    saveUninitialized: false,
-    proxy: true,
-    cookie: {
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: process.env.NODE_ENV === 'production' ? 'lax' : 'strict'
-    }
-}));
-
 // MongoDB Client
 const mongoClient = new MongoClient(process.env.MONGO_URI);
 let db;
 let remindersDb;
 
-async function connectDB() {
-    try {
-        await mongoClient.connect();
-        db = mongoClient.db('GymBotDB');
-        // The bot's reminder_cog.py stores reminders in a separate database
-        // from everything else (gladiator_db, not GymBotDB) - keep a second
-        // handle for it rather than assuming it's in the same place.
-        remindersDb = mongoClient.db('gladiator_db');
-        console.log('✅ Connected to MongoDB (GymBotDB + gladiator_db)');
-    } catch (err) {
-        console.error('❌ MongoDB Connection Error:', err);
+// A real promise (not just a fire-and-forget async function) so the session
+// store below can safely wait for the connection before using it, instead of
+// racing against it on every request.
+const mongoConnectPromise = mongoClient.connect().then((client) => {
+    db = client.db('GymBotDB');
+    // The bot's reminder_cog.py stores reminders in a separate database
+    // from everything else (gladiator_db, not GymBotDB) - keep a second
+    // handle for it rather than assuming it's in the same place.
+    remindersDb = client.db('gladiator_db');
+    console.log('✅ Connected to MongoDB (GymBotDB + gladiator_db)');
+    return client;
+}).catch((err) => {
+    console.error('❌ MongoDB Connection Error:', err);
+    throw err;
+});
+
+// Sessions now persist in Mongo instead of the server's own memory. The old
+// default (express-session's MemoryStore) leaks memory over time and wipes
+// every logged-in user out on every restart/redeploy, neither of which
+// scales past a handful of users.
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'gladiator_super_secret_key',
+    resave: false,
+    saveUninitialized: false,
+    proxy: true,
+    store: MongoStore.create({
+        clientPromise: mongoConnectPromise,
+        dbName: 'GymBotDB',
+        collectionName: 'sessions',
+        ttl: 14 * 24 * 60 * 60,       // sessions expire after 14 days of inactivity
+        autoRemove: 'native',         // let MongoDB's own TTL index handle cleanup
+        touchAfter: 24 * 60 * 60,     // avoid rewriting the session doc on every single request
+    }),
+    cookie: {
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? 'lax' : 'strict',
+        maxAge: 14 * 24 * 60 * 60 * 1000
     }
-}
-connectDB();
+}));
 
 function checkAuth(req, res, next) {
     if (req.session.user) {
