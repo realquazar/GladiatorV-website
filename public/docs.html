@@ -121,7 +121,7 @@
             </h1>
 
             <p class="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                The complete reference for all 11 Gladiator V commands, covering what each one does, exactly how to use
+                The complete reference for all 12 Gladiator V commands, covering what each one does, exactly how to use
                 it,
                 and which ones sync live with your <a href="/dashboard.html"
                     class="text-emerald-400 hover:text-emerald-300 underline underline-offset-2">web dashboard</a>.
@@ -136,6 +136,8 @@
                 class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/schedule</a>
             <a href="#startworkout"
                 class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/startworkout</a>
+            <a href="#exercise"
+                class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/exercise</a>
             <a href="#myworkout"
                 class="shrink-0 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-cardBg border border-gray-800 text-gray-300">/myworkout</a>
             <a href="#resetworkout"
@@ -169,6 +171,8 @@
                         class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/schedule</a>
                     <a data-toc href="#startworkout"
                         class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/startworkout</a>
+                    <a data-toc href="#exercise"
+                        class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/exercise</a>
                     <a data-toc href="#myworkout"
                         class="toc-link pl-4 py-1.5 border-l-2 border-transparent text-sm text-gray-400 hover:text-white transition font-mono">/myworkout</a>
                     <a data-toc href="#resetworkout"
@@ -199,7 +203,7 @@
 
             <div class="space-y-8 md:space-y-10">
 
-                <!-- 1. /schedule -->
+                <!-- 01. /schedule -->
                 <section id="schedule" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
                     <div
                         class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
@@ -235,7 +239,7 @@
                     </div>
                 </section>
 
-                <!-- 2. /startworkout -->
+                <!-- 02. /startworkout -->
                 <section id="startworkout" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
                     <div
                         class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
@@ -258,8 +262,8 @@
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
                             Unlike <code class="font-mono text-gray-300">/schedule</code>, this pulls up <strong
                                 class="text-gray-200">only today's</strong>
-                            workout based on the actual day of the week and your current rank, and gives you a button to
-                            log it the
+                            workout based on the actual day of the week and your current rank, allows you to view exercise
+                            form and animations via the dropdown, and gives you a button to log it the
                             moment you finish. This is the command that actually moves your Total Workouts count and
                             rank forward.
                         </p>
@@ -268,6 +272,7 @@
                             <li>Choose <strong class="text-gray-200">Gym</strong> or <strong
                                     class="text-gray-200">Calisthenics</strong>. Rest days show a recovery message
                                 instead</li>
+                            <li>Optionally select any exercise from the <strong class="text-gray-200">📖 View Exercise Form & Image Guide...</strong> dropdown to inspect proper form</li>
                             <li>Finish the exercises, then tap <strong class="text-emerald-400">✅ Complete
                                     Workout</strong></li>
                         </ol>
@@ -276,11 +281,42 @@
                     </div>
                 </section>
 
-                <!-- 3. /myworkout -->
-                <section id="myworkout" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
+                <!-- 03. /exercise -->
+                <section id="exercise" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
                     <div
                         class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
                         03</div>
+                    <div
+                        class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-gray-800 font-mono font-bold text-white">
+                                <i class="fa-solid fa-book-open text-red-500 text-sm"></i>/exercise
+                            </span>
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-gray-800/60 text-gray-400 text-xs font-bold uppercase tracking-wide">Only
+                                visible to you</span>
+                        </div>
+                        <h2 class="font-display text-white font-bold text-xl mb-2">Master proper form and technique</h2>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Opens an interactive form guide for any movement in the database. Displays target muscle groups,
+                            step-by-step biomechanical execution cues, pro tips to prevent injury, and visual demonstration
+                            animations directly inside Discord.
+                        </p>
+                        <ol class="text-sm text-gray-400 space-y-1.5 list-decimal list-inside">
+                            <li>Run <code class="font-mono text-emerald-400">/exercise</code> and start typing an exercise name</li>
+                            <li>Select from the smart autocomplete list (e.g. <strong class="text-gray-200">Bench Press</strong>, <strong class="text-gray-200">Dumbbell Bicep Curls</strong>, <strong class="text-gray-200">Pull-Ups</strong>)</li>
+                            <li>Study the form cues, muscle highlights, and animation before your sets</li>
+                        </ol>
+                        <p class="text-gray-500 text-xs mt-4 italic">You can also inspect these guides live during your workout using the dropdown inside <code class="font-mono text-gray-400">/startworkout</code>.</p>
+                    </div>
+                </section>
+
+                <!-- 04. /myworkout -->
+                <section id="myworkout" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
+                    <div
+                        class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
+                        04</div>
                     <div
                         class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
@@ -320,11 +356,11 @@
                     </div>
                 </section>
 
-                <!-- 4. /resetworkout -->
+                <!-- 05. /resetworkout -->
                 <section id="resetworkout" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
                     <div
                         class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
-                        04</div>
+                        05</div>
                     <div
                         class="flex-1 bg-cardBg border border-red-900/40 rounded-3xl p-6 hover:border-red-700/60 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
@@ -360,11 +396,11 @@
                     </div>
                 </section>
 
-                <!-- 5. /remindworkout -->
+                <!-- 06. /remindworkout -->
                 <section id="remindworkout" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
                     <div
                         class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
-                        05</div>
+                        06</div>
                     <div
                         class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
@@ -409,11 +445,11 @@
                     </div>
                 </section>
 
-                <!-- 6. /myreminders -->
+                <!-- 07. /myreminders -->
                 <section id="myreminders" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
                     <div
                         class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
-                        06</div>
+                        07</div>
                     <div
                         class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
@@ -447,11 +483,11 @@
                     </div>
                 </section>
 
-                <!-- 7. /levels -->
+                <!-- 08. /levels -->
                 <section id="levels" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
                     <div
                         class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
-                        07</div>
+                        08</div>
                     <div
                         class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
@@ -515,11 +551,11 @@
                     </div>
                 </section>
 
-                <!-- 8. /flex -->
+                <!-- 09. /flex -->
                 <section id="flex" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
                     <div
                         class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
-                        08</div>
+                        09</div>
                     <div
                         class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
@@ -554,11 +590,11 @@
                     </div>
                 </section>
 
-                <!-- 9. /diet -->
+                <!-- 10. /diet -->
                 <section id="diet" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
                     <div
                         class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
-                        09</div>
+                        10</div>
                     <div
                         class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
@@ -586,11 +622,11 @@
                     </div>
                 </section>
 
-                <!-- 10. /hype -->
+                <!-- 11. /hype -->
                 <section id="hype" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
                     <div
                         class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 text-white font-display font-bold text-lg border border-red-500/30">
-                        10</div>
+                        11</div>
                     <div
                         class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-red-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
@@ -611,11 +647,11 @@
                     </div>
                 </section>
 
-                <!-- 11. /help -->
+                <!-- 12. /help -->
                 <section id="help" class="relative flex flex-col md:flex-row gap-4 md:gap-6 scroll-mt-32">
                     <div
                         class="medallion shrink-0 z-10 w-14 h-14 flex items-center justify-center bg-gradient-to-br from-emerald-600 to-emerald-800 text-white font-display font-bold text-lg border border-emerald-400/30">
-                        11</div>
+                        12</div>
                     <div
                         class="flex-1 bg-cardBg border border-gray-800/80 rounded-3xl p-6 hover:border-emerald-900/50 transition">
                         <div class="flex flex-wrap items-center gap-3 mb-3">
