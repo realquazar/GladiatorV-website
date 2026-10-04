@@ -73,15 +73,15 @@ function checkAuth(req, res, next) {
 
 // --- RANK ASSIGNMENT & DEFAULT ROUTINES MATCHING workout_cog.py ---
 function calculateRank(workoutCount) {
-    if (workoutCount >= 1000) return "Gladiator Maximus";
-    if (workoutCount >= 810) return "Titan Ascendant";
-    if (workoutCount >= 600) return "Apex Centurion";
-    if (workoutCount >= 390) return "Gold Gladiator";
-    if (workoutCount >= 330) return "Arena Master";
-    if (workoutCount >= 240) return "Gilded Champion";
-    if (workoutCount >= 150) return "Steel Centurion";
-    if (workoutCount >= 120) return "Iron Vanguard";
-    if (workoutCount >= 60) return "Bronze Legionnaire";
+    if (workoutCount >= 810) return "Gladiator Maximus";
+    if (workoutCount >= 600) return "Titan Ascendant";
+    if (workoutCount >= 390) return "Apex Centurion";
+    if (workoutCount >= 330) return "Gold Gladiator";
+    if (workoutCount >= 240) return "Arena Master";
+    if (workoutCount >= 150) return "Gilded Champion";
+    if (workoutCount >= 120) return "Steel Centurion";
+    if (workoutCount >= 60) return "Iron Vanguard";
+    if (workoutCount >= 30) return "Bronze Legionnaire";
     return "Novice / Beginner";
 }
 
